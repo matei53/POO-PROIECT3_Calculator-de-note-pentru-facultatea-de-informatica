@@ -1,101 +1,61 @@
-# CMake SFML Project Template
+# Calculator de note pentru studenții de informatică din cadrul FMI
 
-This repository template should allow for a fast and hassle-free kick start of your next SFML project using CMake.
-Thanks to [GitHub's nature of templates](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template), you can fork this repository without inheriting its Git history.
+## Descriere generală
 
-The template starts out very basic, but might receive additional features over time:
+Această aplicație ajută la calcularea mediei finale pentru domeniul informatică, anul universitar 2024-2025.
 
-- Basic CMake script to build your project and link SFML on any operating system
-- Basic [GitHub Actions](https://github.com/features/actions) script for all major platforms
+Mai întâi se alege seria, apoi se selectează materiile opționale și cele facultative. În cazul alegerii facultativelor, se pot alege orice număr de opțiuni. În cazul alegerii opționalelor, trebuie aleasă o materie pentru anul 2, sau 6 materii (3 din primele 23 afișate și 3 din celelalte 18) pentru anul 3.
 
-## How to Use
+La final se inserează toate notele primite pentru fiecare materie (e.g. nota de la examen, nota de la colocviu, nota pe activitatea la curs/seminar/laborator). Această notă trebuie să fie între 0 și numărul aflat între parantezele de după numele evaluării.
 
-1. Install [Git](https://git-scm.com/downloads) and [CMake](https://cmake.org/download/). Use your system's package manager if available.
-2. Follow [GitHub's instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for how to use their project template feature to create your own project. If you don't want to use GitHub, see the section below.
-3. Clone your new GitHub repo and open the repo in your text editor of choice.
-4. Open [CMakeLists.txt](CMakeLists.txt). Rename the project and the target name of the executable to whatever name you want. Make sure to change all occurrences.
-5. If you want to add or remove any .cpp files, change the source files listed in the `add_executable` call in CMakeLists.txt to match the source files your project requires. If you plan on keeping the default main.cpp file then no changes are required.
-6. If your code uses the Audio or Network modules then add `SFML::Audio` or `SFML::Network` to the `target_link_libraries` call alongside the existing `SFML::Graphics` library that is being linked.
-7. If you use Linux, install SFML's dependencies using your system package manager. On Ubuntu and other Debian-based distributions you can use the following commands:
-   ```
-   sudo apt update
-   sudo apt install \
-       libxrandr-dev \
-       libxcursor-dev \
-       libxi-dev \
-       libudev-dev \
-       libfreetype-dev \
-       libflac-dev \
-       libvorbis-dev \
-       libgl1-mesa-dev \
-       libegl1-mesa-dev \
-       libfreetype-dev
-   ```
-8. Configure and build your project. Most popular IDEs support CMake projects with very little effort on your part.
+Numărul de dinaintea numelui evaluării reprezintă numărul de puncte aduse de evaluarea respectivă în nota finală.
 
-   - [VS Code](https://code.visualstudio.com) via the [CMake extension](https://code.visualstudio.com/docs/cpp/cmake-linux)
-   - [Visual Studio](https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view=msvc-170)
-   - [CLion](https://www.jetbrains.com/clion/features/cmake-support.html)
-   - [Qt Creator](https://doc.qt.io/qtcreator/creator-project-cmake.html)
+Dacă nota introdusă sau nota finală a unei materii este sub pragul de promovare, căsuța cu numele materiei va deveni roșie, indicând picarea materiei.
 
-   Using CMake from the command line is straightforward as well.
-   Be sure to run these commands in the root directory of the project you just created.
+Nota finală a unei materii este calculată după ce au fost introduse toate notele pentru materia respectivă, iar mediile generale sunt calculate după ce au fost introduse toate notele pentru toate materiile.
 
-   ```
-   cmake -B build
-   cmake --build build
-   ```
+Pentru a ieși din aplicație apăsați ESC.
 
-9. Enjoy!
+## Clase
 
-## Upgrading SFML
+### Obiect - cu derivatele TitleText (căsuță de text simplă), Buton, TextInput (căsuță pentru introducerea notelor)
 
-SFML is found via CMake's [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html) module.
-FetchContent automatically downloads SFML from GitHub and builds it alongside your own code.
-Beyond the convenience of not having to install SFML yourself, this ensures ABI compatibility and simplifies things like specifying static versus shared libraries.
+Acestea reprezintă cele trei tipuri de obiecte ce vor putea fi văzute în interfață.
 
-Modifying what version of SFML you want is as easy as changing the `GIT_TAG` argument.
-Currently it uses SFML 3 via the `3.0.0` tag.
+Un obiect se declară cu următoarele valori: poziția și mărimea pe interfață, mărimea fontului, textul, font și culoare. Pentru un buton, se mai adaugă o culoare pentru animația apăsării, pentru o căsuță de input, se mai adaugă o limită de caractere ce pot fi introduse, iar pentru o căsuță simplă se pot adăuga alte trei culori pentru o animație constantă.
 
-## But I want to...
+Aceste clase conțin **funcția virtuală pură *update()***, care se ocupă de animații. Pentru un buton, animația presupune schimbarea culorii acesteia pentru cinci secunde și revenirea la culoarea normală, pentru o căsuță simplă, animația presupune schimbarea culorii acesteia odată la cinci secunde, iar pentru o căsuță de input, animația presupune apariția și dispariția caracterului '|' pentru a indica că acel input este activ.
 
-Modify CMake options by adding them as configuration parameters (with a `-D` flag) or by modifying the contents of CMakeCache.txt and rebuilding.
+În plus, mai este și **funcția virtuală *align()***, care aliniază textul la stânga pentru căsuța de text simplă, și în centru pentru restul obiectelor.
 
-### Not use GitHub
+Aceste funcții virtuale sunt **apelate prin pointeri *(sunt folosiți numai smart pointers)* la clasa Obiect**. Dacă este nevoie de o apelare a unei funcții care face parte numai dintr-o clasă derivată, se folosește **std::dynamic_pointer_cast<derivată>()** pentru a o putea accesa.
 
-You can use this project without a GitHub account by [downloading the contents](https://github.com/SFML/cmake-sfml-project/archive/refs/heads/master.zip) of the repository as a ZIP archive and unpacking it locally.
-This approach also avoids using Git entirely if you would prefer to not do that.
+Acești pointeri la obiecte se pot găsi în main, **dar și în funcțiile clasei Aplicatie**.
 
-### Change Compilers
+### Aplicatie
 
-See the variety of [`CMAKE_<LANG>_COMPILER`](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER.html) options.
-In particular you'll want to modify `CMAKE_CXX_COMPILER` to point to the C++ compiler you wish to use.
+Această clasă este folosită pentru a gestiona interfața.
 
-### Change Compiler Optimizations
+Aplicația se declară cu lungimea, înălțimea și titlul ferestrei deschise. Clasa mai conține și doi vectori de obiecte, unul care reține toate obiectele din interfață, și altul care reține care dintre ele pot fi apăsate.
 
-CMake abstracts away specific optimizer flags through the [`CMAKE_BUILD_TYPE`](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html) option.
-By default this project recommends `Release` builds which enable optimizations.
-Other build types include `Debug` builds which enable debug symbols but disable optimizations.
-If you're using a multi-configuration generator (as is often the case on Windows), you can modify the [`CMAKE_CONFIGURATION_TYPES`](https://cmake.org/cmake/help/latest/variable/CMAKE_CONFIGURATION_TYPES.html#variable:CMAKE_CONFIGURATION_TYPES) option.
+De asemenea, aici se găsesc **atributele statice *active_input* și *clicked***, care rețin căsuța de input activă, respectiv obiectul apăsat la un anumit moment.
 
-### Change Generators
+Atributul *clicked* este gestionat de **funcțiile statice *setClick(obiect)* și *getClick()***, iar atributul *active_input* este gestionat de **funcțiile stative *getActiveInput()* și *setActiveInput(căsuță)***.
 
-While CMake will attempt to pick a suitable default generator, some systems offer a number of generators to choose from.
-Ubuntu, for example, offers Makefiles and Ninja as two potential options.
-For a list of generators, click [here](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html).
-To modify the generator you're using you must reconfigure your project providing a `-G` flag with a value corresponding to the generator you want.
-You can't simply modify an entry in the CMakeCache.txt file unlike the above options.
-Then you may rebuild your project with this new generator.
+Atâta timp cât fereastra este deschisă, se verifică dacă un obiect a fost apăsat cu *getClick*. Dacă da, atunci se fac modificări pe interfață în funcție de ce a fost apăsat, iar apoi obiectul apăsat se setează la *nullptr*.
 
-## More Reading
+### Materie, Notare, Evaluare
 
-Here are some useful resources if you want to learn more about CMake:
+Clasele Materie, Notare și Evaluare sunt folosite pentru a reține toate materiile și metodele de notare pentru fiecare dintre acestea. Fiecare materie are trei metode de notare separate, una pentru fiecare serie. Fiecare metodă de notare cuprinde mai multe evaluări, care au un procentaj din nota finală, un prag de promovare și o notă maximă care poate fi obținută.
 
-- [Official CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/)
-- [How to Use CMake Without the Agonizing Pain - Part 1](https://alexreinking.com/blog/how-to-use-cmake-without-the-agonizing-pain-part-1.html)
-- [How to Use CMake Without the Agonizing Pain - Part 2](https://alexreinking.com/blog/how-to-use-cmake-without-the-agonizing-pain-part-2.html)
-- [Better CMake YouTube series by Jefferon Amstutz](https://www.youtube.com/playlist?list=PL8i3OhJb4FNV10aIZ8oF0AA46HgA2ed8g)
+### InvalidFilePathError, InvalidFileContentError, InvalidInputError - derivate din std:exception
 
-## License
+Clasa InvalidFilePathError este folosita atunci cand fișierul cu informațiile despre materii sau cel cu fontul textului nu pot fi incarcate. In acest caz, se va închide fereastra (dacă este deschisă), și se va afișa un mesaj (cu funcția suprascrisă *what*) în terminal legat de problemă.
 
-The source code is dual licensed under Public Domain and MIT -- choose whichever you prefer.
+Clasa InvalidFileContentError este folosită atunci când fișierul cu informațiile despre materii nu conține informatii potrivite pentru program. În acest caz, pe lângă mesaj, se va afișa și linia din fișierul text unde s-a găsit problema.
+
+Clasa InvalidInputError este folosită atunci când este salvată o notă invalidă introdusă într-o căsuță de input. În acest caz, culoarea de animație a butonului de salvare se va schimba în roșu, iar nota nu se va salva.
+
+## Resurse
+
+[SFML](https://github.com/SFML/SFML/tree/3.0.1) (Zlib)
