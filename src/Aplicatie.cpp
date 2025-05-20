@@ -101,10 +101,7 @@ void Aplicatie::updateEvents()
                     auto bounds = object->getBounds();
                     auto leftUpper = bounds.first;
                     auto rightBottom = bounds.second;
-                    if (mouse_position.x >= leftUpper.x &&
-                        mouse_position.x <= rightBottom.x &&
-                        mouse_position.y >= leftUpper.y &&
-                        mouse_position.y <= rightBottom.y)
+                    if (mouse_position.x >= leftUpper.x && mouse_position.x <= rightBottom.x && mouse_position.y >= leftUpper.y && mouse_position.y <= rightBottom.y)
                     {
                         Aplicatie::setClick(object);
                         break;
@@ -137,7 +134,7 @@ void Aplicatie::addObject(std::shared_ptr<Obiect> object)
 void Aplicatie::removeObject(std::shared_ptr<Obiect> ob)
 {
     obiecte.erase(std::remove(obiecte.begin(), obiecte.end(), ob), obiecte.end());
-    if (std::find(obiecte_clickable.begin(), obiecte_clickable.end(), ob) != obiecte_clickable.end())
+    if (isInVector<std::shared_ptr<Obiect>>(obiecte_clickable, ob))
     {
         obiecte_clickable.erase(std::remove(obiecte_clickable.begin(), obiecte_clickable.end(), ob), obiecte_clickable.end());
     }
@@ -145,7 +142,7 @@ void Aplicatie::removeObject(std::shared_ptr<Obiect> ob)
 
 void Aplicatie::removeClickableObject(std::shared_ptr<Obiect> ob)
 {
-    if (std::find(obiecte_clickable.begin(), obiecte_clickable.end(), ob) != obiecte_clickable.end())
+    if (isInVector<std::shared_ptr<Obiect>>(obiecte_clickable, ob))
     {
         obiecte_clickable.erase(std::remove(obiecte_clickable.begin(), obiecte_clickable.end(), ob), obiecte_clickable.end());
     }

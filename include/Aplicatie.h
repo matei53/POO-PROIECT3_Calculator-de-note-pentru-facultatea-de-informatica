@@ -4,6 +4,7 @@
 #include "Buton.h"
 #include "TitleText.h"
 #include "TextInput.h"
+#include "FunctiiTemplate.h"
 
 #include <vector>
 #include <functional>

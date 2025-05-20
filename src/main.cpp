@@ -1,6 +1,7 @@
 #include "Aplicatie.h"
 #include "Materie.h"
 #include "Erori.h"
+#include "FunctiiTemplate.h"
 #include <fstream>
 
 struct NoteMaterie
@@ -368,9 +369,12 @@ void removeFirstPageObjects(Aplicatie& app, std::shared_ptr<Obiect>& titlu, std:
     app.removeObject(buton_inainte); buton_inainte.reset();
     app.removeObject(titlu_facultative); titlu_facultative.reset();
     app.removeObject(titlu_optionale); titlu_optionale.reset();
-    for (std::shared_ptr<Obiect> b : butoane_serii) { app.removeObject(b); b.reset(); }
-    for (std::shared_ptr<Obiect> b : butoane_optionale) { app.removeObject(b); b.reset(); }
-    for (std::shared_ptr<Obiect> b : butoane_facultative) { app.removeObject(b); b.reset(); }
+    for (std::shared_ptr<Obiect> b : butoane_serii) app.removeObject(b);
+    butoane_serii.clear();
+    for (std::shared_ptr<Obiect> b : butoane_optionale) app.removeObject(b);
+    butoane_optionale.clear();
+    for (std::shared_ptr<Obiect> b : butoane_facultative) app.removeObject(b);
+    butoane_facultative.clear();
 }
 
 void addPageTwoSideObjects(std::shared_ptr<Obiect>& titlu_medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& titlu_medie_finala_buget,
@@ -417,9 +421,7 @@ void addPageTwoSubjectInputs(std::vector<Materie>& materii, const int an, const 
     {
         if (m.getAn() == an)
         {
-            if ((m.isOptional() && (std::find(optionale_selectate.begin(), optionale_selectate.end(), m) != optionale_selectate.end()) ||
-                (m.isFacultativ() && std::find(facultative_selectate.begin(), facultative_selectate.end(), m) != facultative_selectate.end()) ||
-                (!m.isOptional() && !m.isFacultativ())))
+            if ((m.isOptional() && isInVector<Materie>(optionale_selectate, m)) || (m.isFacultativ() && isInVector<Materie>(facultative_selectate, m)) || (!m.isOptional() && !m.isFacultativ()))
             {
                 if (notare_materii.size() == 6)
                 {
@@ -727,7 +729,7 @@ void manageGradeInputs(std::vector<NoteMaterie>& notare_materii, Aplicatie& app,
 {
     for (NoteMaterie m : notare_materii)
     {
-        if (std::find(m.inputuri.begin(), m.inputuri.end(), Aplicatie::getClick()) != m.inputuri.end())
+        if (isInVector<std::shared_ptr<Obiect>>(m.inputuri, Aplicatie::getClick()))
         {
             manageInputClick(app);
             Aplicatie::setClick(nullptr);
@@ -799,7 +801,7 @@ int main()
 
             if (Aplicatie::getClick())
             {
-                if (std::find(butoane_serii.begin(), butoane_serii.end(), Aplicatie::getClick()) != butoane_serii.end())
+                if (isInVector<std::shared_ptr<Obiect>>(butoane_serii, Aplicatie::getClick()))
                 {
                     deactivateSeriesButtons(butoane_serii, Aplicatie::getClick(), app);
                     createForwardButton(buton_inainte, font, app);
@@ -816,7 +818,7 @@ int main()
                         createYearThreeOptions(titlu_optionale, materii, butoane_optionale, font, app, an);
                 }
 
-                else if (std::find(butoane_optionale.begin(), butoane_optionale.end(), Aplicatie::getClick()) != butoane_optionale.end())
+                else if (isInVector<std::shared_ptr<Obiect>>(butoane_optionale, Aplicatie::getClick()))
                 {
                     if (an == 2)
                         manageYearTwoOptionals(materii, butoane_optionale, optionale_selectate, app);
@@ -825,7 +827,7 @@ int main()
                     Aplicatie::setClick(nullptr);
                 }
 
-                else if (std::find(butoane_facultative.begin(), butoane_facultative.end(), Aplicatie::getClick()) != butoane_facultative.end())
+                else if (isInVector<std::shared_ptr<Obiect>>(butoane_facultative, Aplicatie::getClick()))
                 {
                     manageFacultatives(materii, butoane_facultative, facultative_selectate, app);
                     Aplicatie::setClick(nullptr);
