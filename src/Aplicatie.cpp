@@ -133,19 +133,15 @@ void Aplicatie::addObject(std::shared_ptr<Obiect> object)
 
 void Aplicatie::removeObject(std::shared_ptr<Obiect> ob)
 {
-    obiecte.erase(std::remove(obiecte.begin(), obiecte.end(), ob), obiecte.end());
+    eraseFromVector<std::shared_ptr<Obiect>>(obiecte, ob);
     if (isInVector<std::shared_ptr<Obiect>>(obiecte_clickable, ob))
-    {
-        obiecte_clickable.erase(std::remove(obiecte_clickable.begin(), obiecte_clickable.end(), ob), obiecte_clickable.end());
-    }
+        eraseFromVector<std::shared_ptr<Obiect>>(obiecte_clickable, ob);
 }
 
 void Aplicatie::removeClickableObject(std::shared_ptr<Obiect> ob)
 {
     if (isInVector<std::shared_ptr<Obiect>>(obiecte_clickable, ob))
-    {
-        obiecte_clickable.erase(std::remove(obiecte_clickable.begin(), obiecte_clickable.end(), ob), obiecte_clickable.end());
-    }
+        eraseFromVector<std::shared_ptr<Obiect>>(obiecte_clickable, ob);
 }
 
 std::shared_ptr<TextInput> Aplicatie::getActiveInput()

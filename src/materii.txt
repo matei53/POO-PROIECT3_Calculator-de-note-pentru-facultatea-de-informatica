@@ -872,7 +872,7 @@ max: 10
 prag: 5
 nota: -1
 -
-Educatie fizica si metodica
+Educatie fizica si metodica 1
 credit: 2
 an: 1
 optional: 0
@@ -1304,7 +1304,7 @@ max: 10
 prag: 5
 nota: -1
 -
-Educatie fizica si metodica
+Educatie fizica si metodica 2
 credit: 2
 an: 2
 optional: 0
