@@ -1,8 +1,7 @@
 #include "TextInput.h"
 
 TextInput::TextInput(const sf::Vector2f& poz, const sf::Vector2f& mar, const unsigned int mar_font, const std::string& text_, const sf::Font& font,
-	const sf::Color& culoare_, const int limita) : Obiect{ poz, mar, mar_font, text_, font, culoare_ },
-	limita_caractere{ limita } { }
+	const sf::Color& culoare_, const int limita) : Obiect{ poz, mar, mar_font, text_, font, culoare_ }, limita_caractere{ limita } { }
 
 //std::shared_ptr<Obiect> TextInput::clone() const
 //{

@@ -62,4 +62,5 @@ void Obiect::setText(const std::string t)
 void Obiect::setPosition(const sf::Vector2f& poz)
 {
 	pozitie = poz;
+	forma.setPosition(pozitie);
 }

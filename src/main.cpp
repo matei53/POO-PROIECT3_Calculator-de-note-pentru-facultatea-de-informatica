@@ -2,6 +2,7 @@
 #include "Materie.h"
 #include "Erori.h"
 #include "FunctiiTemplate.h"
+#include "ObiectFactory.h"
 #include <fstream>
 
 struct NoteMaterie
@@ -145,15 +146,15 @@ void createSeriesChoiceBox(std::shared_ptr<Obiect>& alegere_serie, sf::Font& fon
 
 void createSeriesButtons(std::vector<std::shared_ptr<Obiect>>& butoane_serii, sf::Font& font, Aplicatie& app)
 {
-    butoane_serii.push_back(std::make_shared<Buton>(Buton({ 400, 155 }, { 85, 85 }, 50, "13", font, sf::Color::Green, sf::Color::Yellow)));
-    butoane_serii.push_back(std::make_shared<Buton>(Buton({ 500, 155 }, { 85, 85 }, 50, "14", font, sf::Color::Green, sf::Color::Yellow)));
-    butoane_serii.push_back(std::make_shared<Buton>(Buton({ 600, 155 }, { 85, 85 }, 50, "15", font, sf::Color::Green, sf::Color::Yellow)));
-    butoane_serii.push_back(std::make_shared<Buton>(Buton({ 700, 155 }, { 85, 85 }, 50, "23", font, sf::Color::Green, sf::Color::Yellow)));
-    butoane_serii.push_back(std::make_shared<Buton>(Buton({ 800, 155 }, { 85, 85 }, 50, "24", font, sf::Color::Green, sf::Color::Yellow)));
-    butoane_serii.push_back(std::make_shared<Buton>(Buton({ 900, 155 }, { 85, 85 }, 50, "25", font, sf::Color::Green, sf::Color::Yellow)));
-    butoane_serii.push_back(std::make_shared<Buton>(Buton({ 1000, 155 }, { 85, 85 }, 50, "33", font, sf::Color::Green, sf::Color::Yellow)));
-    butoane_serii.push_back(std::make_shared<Buton>(Buton({ 1100, 155 }, { 85, 85 }, 50, "34", font, sf::Color::Green, sf::Color::Yellow)));
-    butoane_serii.push_back(std::make_shared<Buton>(Buton({ 1200, 155 }, { 85, 85 }, 50, "35", font, sf::Color::Green, sf::Color::Yellow)));
+    butoane_serii.push_back(ObiectFactory::buton_serie({ 400, 155 }, "13", font));
+    butoane_serii.push_back(ObiectFactory::buton_serie({ 500, 155 }, "14", font));
+    butoane_serii.push_back(ObiectFactory::buton_serie({ 600, 155 }, "15", font));
+    butoane_serii.push_back(ObiectFactory::buton_serie({ 700, 155 }, "23", font));
+    butoane_serii.push_back(ObiectFactory::buton_serie({ 800, 155 }, "24", font));
+    butoane_serii.push_back(ObiectFactory::buton_serie({ 900, 155 }, "25", font));
+    butoane_serii.push_back(ObiectFactory::buton_serie({ 1000, 155 }, "33", font));
+    butoane_serii.push_back(ObiectFactory::buton_serie({ 1100, 155 }, "34", font));
+    butoane_serii.push_back(ObiectFactory::buton_serie({ 1200, 155 }, "35", font));
 
     for (std::shared_ptr<Obiect> b : butoane_serii)
     {
@@ -194,7 +195,7 @@ void createYearOneOptions(std::shared_ptr<Obiect>& titlu_facultative, std::vecto
     {
         if (m.isFacultativ())
         {
-            butoane_facultative.push_back(std::make_shared<Buton>(Buton({ 0, y_fac }, { 500, 70 }, 30, m.getNume(), font, sf::Color::Green, sf::Color::Yellow)));
+            butoane_facultative.push_back(ObiectFactory::buton_optfac12({ 0, y_fac }, m.getNume(), font));
             y_fac += 75;
         }
     }
@@ -218,7 +219,7 @@ void createYearTwoOptions(std::shared_ptr<Obiect>& titlu_facultative, std::share
     {
         if (m.isFacultativ())
         {
-            butoane_facultative.push_back(std::make_shared<Buton>(Buton({ 0, y }, { 500, 70 }, 30, m.getNume(), font, sf::Color::Green, sf::Color::Yellow)));
+            butoane_facultative.push_back(ObiectFactory::buton_optfac12({ 0, y }, m.getNume(), font));
             y += 75;
         }
     }
@@ -238,7 +239,7 @@ void createYearTwoOptions(std::shared_ptr<Obiect>& titlu_facultative, std::share
     {
         if (m.isOptional())
         {
-            butoane_optionale.push_back(std::make_shared<Buton>(Buton({ 0, y }, { 500, 70 }, 30, m.getNume(), font, sf::Color::Green, sf::Color::Yellow)));
+            butoane_optionale.push_back(ObiectFactory::buton_optfac12({ 0, y }, m.getNume(), font));
             y += 75;
         }
     }
@@ -262,7 +263,7 @@ void createYearThreeOptions(std::shared_ptr<Obiect>& titlu_optionale, std::vecto
     {
         if (m.isOptional())
         {
-            butoane_optionale.push_back(std::make_shared<Buton>(Buton({ x_opt, y_opt }, { 400, 40 }, 20, m.getNume(), font, sf::Color::Green, sf::Color::Yellow)));
+            butoane_optionale.push_back(ObiectFactory::buton_opt3({ x_opt, y_opt }, m.getNume(), font));
             y_opt += 45;
             if (y_opt > 950 || butoane_optionale.size() == 23)
             {
@@ -395,12 +396,12 @@ void addPageTwoSideObjects(std::shared_ptr<Obiect>& titlu_medie_finala_bursa, st
     std::shared_ptr<Obiect>& instructiune1, std::shared_ptr<Obiect>& instructiune2, std::shared_ptr<Obiect>& instructiune3, std::shared_ptr<Obiect>& instructiune4,
     sf::Font& font, Aplicatie& app)
 {
-    titlu_medie_finala_bursa = std::make_shared<TitleText>(TitleText({ 1700, 5 }, { 195, 35 }, 20, "MEDIE BURSA", font, sf::Color::Magenta));
-    medie_finala_bursa = std::make_shared<TitleText>(TitleText({ 1700, 40 }, { 195, 35 }, 20, "", font, sf::Color::Yellow));
-    titlu_medie_finala_buget = std::make_shared<TitleText>(TitleText({ 1700, 80 }, { 195, 35 }, 20, "PUNCTE CREDIT", font, sf::Color::Magenta));
-    medie_finala_buget = std::make_shared<TitleText>(TitleText({ 1700, 115 }, { 195, 35 }, 20, "", font, sf::Color::Yellow));
-    titlu_credite = std::make_shared<TitleText>(TitleText({ 1700, 155 }, { 195, 35 }, 20, "CREDITE", font, sf::Color::Magenta));
-    total_credite_display = std::make_shared<TitleText>(TitleText({ 1700, 190 }, { 195, 35 }, 20, "", font, sf::Color::Yellow));
+    titlu_medie_finala_bursa = ObiectFactory::titlu_medie({ 1700, 5 }, "MEDIE BURSA", font);
+    medie_finala_bursa = ObiectFactory::afisare_medie({ 1700, 40 }, "", font);
+    titlu_medie_finala_buget = ObiectFactory::titlu_medie({ 1700, 80 }, "PUNCTE CREDIT", font);
+    medie_finala_buget = ObiectFactory::afisare_medie({ 1700, 115 }, "", font);
+    titlu_credite = ObiectFactory::titlu_medie({ 1700, 155 }, "CREDITE", font);
+    total_credite_display = ObiectFactory::afisare_medie({ 1700, 190 }, "", font);
     titlu_medie_finala_bursa->align();
     titlu_medie_finala_buget->align();
     titlu_credite->align();
@@ -444,7 +445,7 @@ void addPageTwoSubjectInputs(std::vector<Materie>& materii, const int an, const 
             }
             float y1 = y;
             NoteMaterie M;
-            M.titlu_materie = std::make_shared<TitleText>(TitleText({ x, y1 }, { 235, 35 }, 12, m.getNume(), font, sf::Color::Green));
+            M.titlu_materie = ObiectFactory::titlu_materie({ x, y1 }, m.getNume(), font);
             if (m.getNotare(serie)->getNotaFinala() != -1 && m.getNotare(serie)->getNotaFinala() < 5)
             {
                 M.titlu_materie->changeColor(sf::Color::Red);
@@ -453,26 +454,27 @@ void addPageTwoSubjectInputs(std::vector<Materie>& materii, const int an, const 
             M.titlu_materie->align();
             app.addObject(M.titlu_materie);
             if (m.getNotare(serie)->getNotaFinala() == -1)
-                M.nota_finala = std::make_shared<Buton>(Buton({ x + 235, y1 }, { 40, 35 }, 15, "", font, sf::Color::Magenta, sf::Color::Magenta));
+                M.nota_finala = ObiectFactory::nota_finala({ x + 235, y1 }, "", font);
             else
-                M.nota_finala = std::make_shared<Buton>(Buton({ x + 235, y1 }, { 40, 35 }, 15, std::to_string(m.getNotare(serie)->getNotaFinala()), font, sf::Color::Magenta, sf::Color::Magenta));
+                M.nota_finala = ObiectFactory::nota_finala({ x + 235, y1 }, std::to_string(m.getNotare(serie)->getNotaFinala()), font);
             app.addObject(M.nota_finala);
             M.nota_finala->align();
             for (std::shared_ptr<Evaluare> e : m.getNotare(serie)->getEvals())
             {
                 y1 += 35;
-                auto ev = std::make_shared<TitleText>(TitleText({ x, y1 }, { 155, 35 }, 10, std::to_string(e->getParteFinal()).substr(0, 4) + " - " + e->getTip() + " (" + std::to_string(e->getMaxim()).substr(0, 4) + ")", font, sf::Color::Green));
+                auto ev = ObiectFactory::titlu_evaluare({ x, y1 }, std::to_string(e->getParteFinal()).substr(0, 4) + " - " + e->getTip() + " (" + std::to_string(e->getMaxim()).substr(0, 4) + ")", font);
+
                 std::shared_ptr<Obiect> inp;
                 if (e->getNota() == -1)
-                    inp = std::make_shared<TextInput>(TextInput({ x + 160, y1 }, { 75, 35 }, 15, "> ", font, sf::Color::Green, 7));
+                    inp = ObiectFactory::input_note({ x + 160, y1 }, "> ", font);
                 else
-                    inp = std::make_shared<TextInput>(TextInput({ x + 160, y1 }, { 75, 35 }, 15, "> " + std::to_string(e->getNota()).substr(0, 5), font, sf::Color::Green, 7));
+                    inp = ObiectFactory::input_note({ x + 160, y1 }, "> " + std::to_string(e->getNota()).substr(0, 5), font);
                 if (e->getNota() < e->getPrag() && e->getNota() != -1)
                 {
                     M.titlu_materie->changeColor(sf::Color::Red);
                     titlu_medie_finala_bursa->changeColor(sf::Color::Red);
                 }
-                auto save = std::make_shared<Buton>(Buton({ x + 240, y1 }, { 35, 35 }, 15, "OK", font, sf::Color::Yellow, sf::Color::Green));
+                auto save = ObiectFactory::buton_salvare({ x + 240, y1 }, "OK", font);
                 ev->align(); inp->align(); save->align();
                 inp->setClickable(1);
                 save->setClickable(1);
