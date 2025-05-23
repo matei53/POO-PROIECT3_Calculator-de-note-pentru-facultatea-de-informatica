@@ -1,13 +1,15 @@
 #include "Aplicatie.h"
 
-Aplicatie::Aplicatie(std::string title, unsigned int width, unsigned int height) : window{ sf::VideoMode({width, height}),
-    title, sf::Style::Titlebar | sf::Style::Close }
+Aplicatie::Aplicatie() : window{ sf::VideoMode({1900, 980}), "Calculator note", sf::Style::Titlebar | sf::Style::Close }
 {
     window.setFramerateLimit(60);
 }
 
-std::shared_ptr<Obiect> Aplicatie::clicked = nullptr;
-std::shared_ptr<TextInput> Aplicatie::active_input = nullptr;
+Aplicatie& Aplicatie::getAplicatie()
+{
+    static Aplicatie app;
+    return app;
+}
 
 void Aplicatie::setClick(std::shared_ptr<Obiect> ob)
 {

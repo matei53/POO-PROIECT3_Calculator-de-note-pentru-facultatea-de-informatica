@@ -126,8 +126,6 @@ void removeUnneededSubjects(const int an, std::vector<Materie>& materii)
         else
             i++;
     }
-    for (i = 0 ; i < materii.size(); i++)
-        std::cout << materii[i].getNume() << "\n";
 }
 
 void createTitle(std::shared_ptr<Obiect>& titlu, sf::Font& font, Aplicatie& app)
@@ -288,7 +286,7 @@ void manageYearTwoOptionals(std::vector<Materie>& materii, std::vector<std::shar
         b->setClickable(0);
         app.removeClickableObject(b);
     }
-    auto b = std::dynamic_pointer_cast<Buton>(Aplicatie::getClick());
+    auto b = std::dynamic_pointer_cast<Buton>(app.getClick());
     b->changeColor(sf::Color::Cyan);
     for (Materie m : materii)
     {
@@ -302,7 +300,7 @@ void manageYearTwoOptionals(std::vector<Materie>& materii, std::vector<std::shar
 
 void manageYearThreeOptionals(std::vector<Materie>& materii, std::vector<std::shared_ptr<Obiect>>& butoane_optionale, std::vector<Materie>& optionale_selectate, Aplicatie& app)
 {
-    auto b = std::dynamic_pointer_cast<Buton>(Aplicatie::getClick());
+    auto b = std::dynamic_pointer_cast<Buton>(app.getClick());
     b->changeColor(sf::Color::Cyan);
     b->setClickable(0);
     app.removeClickableObject(b);
@@ -351,7 +349,7 @@ void manageYearThreeOptionals(std::vector<Materie>& materii, std::vector<std::sh
 
 void manageFacultatives(std::vector<Materie>& materii, std::vector<std::shared_ptr<Obiect>>& butoane_facultative, std::vector<Materie>& facultative_selectate, Aplicatie& app)
 {
-    auto b = std::dynamic_pointer_cast<Buton>(Aplicatie::getClick());
+    auto b = std::dynamic_pointer_cast<Buton>(app.getClick());
     b->changeColor(sf::Color::Cyan);
     b->setClickable(0);
     app.removeClickableObject(b);
@@ -698,17 +696,17 @@ void manageInputedGrade(std::vector<NoteMaterie>& notare_materii, Aplicatie& app
 
 void manageInputClick(Aplicatie& app)
 {
-    if (Aplicatie::getActiveInput())
-        Aplicatie::getActiveInput()->stopAnimation();
-    auto inp = std::dynamic_pointer_cast<TextInput>(Aplicatie::getClick());
+    if (app.getActiveInput())
+        app.getActiveInput()->stopAnimation();
+    auto inp = std::dynamic_pointer_cast<TextInput>(app.getClick());
     inp->animateInput();
-    Aplicatie::setActiveInput(inp);
+    app.setActiveInput(inp);
 }
 
 void manageSaveClick(std::vector<NoteMaterie>& notare_materii, Aplicatie& app, std::vector<Materie>& materii, const int serie, std::shared_ptr<Obiect>& titlu_medie_finala_bursa,
     std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget, std::shared_ptr<Obiect>& total_credite_display, NoteMaterie& m, const int i)
 {
-    std::shared_ptr<Buton> sav = std::dynamic_pointer_cast<Buton>(Aplicatie::getClick());
+    std::shared_ptr<Buton> sav = std::dynamic_pointer_cast<Buton>(app.getClick());
     sav->changeAnimationColor(sf::Color::Green);
     try
     {
@@ -741,18 +739,18 @@ void manageGradeInputs(std::vector<NoteMaterie>& notare_materii, Aplicatie& app,
 {
     for (NoteMaterie m : notare_materii)
     {
-        if (isInVector<std::shared_ptr<Obiect>>(m.inputuri, Aplicatie::getClick()))
+        if (isInVector<std::shared_ptr<Obiect>>(m.inputuri, app.getClick()))
         {
             manageInputClick(app);
-            Aplicatie::setClick(nullptr);
+            app.setClick(nullptr);
             break;
         }
         else
             for (int i = 0; i < m.salvari.size(); i++)
-                if (m.salvari.at(i) == Aplicatie::getClick())
+                if (m.salvari.at(i) == app.getClick())
                 {
                     manageSaveClick(notare_materii, app, materii, serie, titlu_medie_finala_bursa, medie_finala_bursa, medie_finala_buget, total_credite_display, m, i);
-                    Aplicatie::setClick(nullptr);
+                    app.setClick(nullptr);
                     break;
                 }
     }
@@ -768,7 +766,7 @@ int main()
 
         sf::Font font("..\\..\\..\\..\\src\\Roboto-Black.ttf");
 
-        Aplicatie app("Calculator note", 1900, 980);
+        auto& app = Aplicatie::getAplicatie();
         int an = 0, serie = 0;
 
         std::shared_ptr<Obiect> titlu;
@@ -811,16 +809,16 @@ int main()
             app.update();
             app.render();
 
-            if (Aplicatie::getClick())
+            if (app.getClick())
             {
-                if (isInVector<std::shared_ptr<Obiect>>(butoane_serii, Aplicatie::getClick()))
+                if (isInVector<std::shared_ptr<Obiect>>(butoane_serii, app.getClick()))
                 {
-                    deactivateSeriesButtons(butoane_serii, Aplicatie::getClick(), app);
+                    deactivateSeriesButtons(butoane_serii, app.getClick(), app);
                     createForwardButton(buton_inainte, font, app);
 
-                    an = Aplicatie::getClick()->getText().front() - '0';
-                    serie = Aplicatie::getClick()->getText().back() - '0';
-                    Aplicatie::setClick(nullptr);
+                    an = app.getClick()->getText().front() - '0';
+                    serie = app.getClick()->getText().back() - '0';
+                    app.setClick(nullptr);
 
                     removeUnneededSubjects(an, materii);
 
@@ -832,24 +830,24 @@ int main()
                         createYearThreeOptions(titlu_optionale, materii, butoane_optionale, font, app, an);
                 }
 
-                else if (isInVector<std::shared_ptr<Obiect>>(butoane_optionale, Aplicatie::getClick()))
+                else if (isInVector<std::shared_ptr<Obiect>>(butoane_optionale, app.getClick()))
                 {
                     if (an == 2)
                         manageYearTwoOptionals(materii, butoane_optionale, optionale_selectate, app);
                     else if (an == 3)
                         manageYearThreeOptionals(materii, butoane_optionale, optionale_selectate, app);
-                    Aplicatie::setClick(nullptr);
+                    app.setClick(nullptr);
                 }
 
-                else if (isInVector<std::shared_ptr<Obiect>>(butoane_facultative, Aplicatie::getClick()))
+                else if (isInVector<std::shared_ptr<Obiect>>(butoane_facultative, app.getClick()))
                 {
                     manageFacultatives(materii, butoane_facultative, facultative_selectate, app);
-                    Aplicatie::setClick(nullptr);
+                    app.setClick(nullptr);
                 }
 
-                else if (Aplicatie::getClick() == buton_inainte)
+                else if (app.getClick() == buton_inainte)
                 {
-                    Aplicatie::setClick(nullptr);
+                    app.setClick(nullptr);
                     if (checkOptionalSelection(butoane_optionale))
                     {
                         removeFirstPageObjects(app, titlu, alegere_serie, buton_inainte, titlu_facultative, titlu_optionale, butoane_serii, butoane_optionale, butoane_facultative);

@@ -13,18 +13,24 @@ class Aplicatie
 {
 	std::vector<std::shared_ptr<Obiect>> obiecte;
 	std::vector<std::shared_ptr<Obiect>> obiecte_clickable;
-	static std::shared_ptr<TextInput> active_input;
+	std::shared_ptr<TextInput> active_input = nullptr;
 	sf::RenderWindow window;
 	sf::Vector2i mouse_position;
-	static std::shared_ptr<Obiect> clicked;
+	std::shared_ptr<Obiect> clicked = nullptr;
 
 	void updateEvents();
 	void updateMousePosition();
 
+	Aplicatie();
+
 public:
-	Aplicatie(std::string, unsigned int, unsigned int);
-	static void setClick(std::shared_ptr<Obiect>);
-	static std::shared_ptr<Obiect> getClick();
+	Aplicatie(const Aplicatie&) = delete;
+	Aplicatie& operator=(const Aplicatie&) = delete;
+
+	static Aplicatie& getAplicatie();
+
+	void setClick(std::shared_ptr<Obiect>);
+	std::shared_ptr<Obiect> getClick();
 
 	void update();
 	void render();
@@ -36,8 +42,8 @@ public:
 	void removeObject(std::shared_ptr<Obiect>);
 	void removeClickableObject(std::shared_ptr<Obiect>);
 
-	static std::shared_ptr<TextInput> getActiveInput();
-	static void setActiveInput(std::shared_ptr<TextInput>);
+	std::shared_ptr<TextInput> getActiveInput();
+	void setActiveInput(std::shared_ptr<TextInput>);
 };
 
 #endif
