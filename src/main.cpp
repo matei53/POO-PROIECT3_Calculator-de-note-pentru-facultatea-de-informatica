@@ -166,7 +166,7 @@ void createSeriesButtons(std::vector<std::shared_ptr<Obiect>>& butoane_serii, sf
 
 void createForwardButton(std::shared_ptr<Obiect>& buton_inainte, sf::Font& font, Aplicatie& app)
 {
-    buton_inainte = std::make_shared<Buton>(Buton({ 1300, 155 }, { 185, 85 }, 50, "Inainte", font, sf::Color::Magenta, sf::Color::Red));
+    buton_inainte = std::make_shared<Buton<SeriesSelectionClick>>(Buton<SeriesSelectionClick>({ 1300, 155 }, { 185, 85 }, 50, "Inainte", font, sf::Color::Magenta, sf::Color::Red, 5));
     buton_inainte->setClickable(1);
     buton_inainte->align();
     app.addObject(buton_inainte);
@@ -179,7 +179,7 @@ void deactivateSeriesButtons(std::vector<std::shared_ptr<Obiect>>& butoane_serii
         b->setClickable(0);
         app.removeClickableObject(b);
     }
-    auto b = std::dynamic_pointer_cast<Buton>(clicked_button);
+    auto b = std::dynamic_pointer_cast<Buton<SeriesSelectionClick>>(clicked_button);
     b->animateClick();
 }
 
@@ -282,13 +282,13 @@ void createYearThreeOptions(std::shared_ptr<Obiect>& titlu_optionale, std::vecto
 
 void manageYearTwoOptionals(std::vector<Materie>& materii, std::vector<std::shared_ptr<Obiect>>& butoane_optionale, std::vector<Materie>& optionale_selectate, Aplicatie& app)
 {
+    auto b = std::dynamic_pointer_cast<Buton<OptFacSelectionClick>>(app.getClick());
+    b->animateClick();
     for (std::shared_ptr<Obiect> b : butoane_optionale)
     {
         b->setClickable(0);
         app.removeClickableObject(b);
     }
-    auto b = std::dynamic_pointer_cast<Buton>(app.getClick());
-    b->changeColor(sf::Color::Cyan);
     for (Materie m : materii)
     {
         if (m.getNume() == b->getText())
@@ -301,8 +301,8 @@ void manageYearTwoOptionals(std::vector<Materie>& materii, std::vector<std::shar
 
 void manageYearThreeOptionals(std::vector<Materie>& materii, std::vector<std::shared_ptr<Obiect>>& butoane_optionale, std::vector<Materie>& optionale_selectate, Aplicatie& app)
 {
-    auto b = std::dynamic_pointer_cast<Buton>(app.getClick());
-    b->changeColor(sf::Color::Cyan);
+    auto b = std::dynamic_pointer_cast<Buton<OptFacSelectionClick>>(app.getClick());
+    b->animateClick();
     b->setClickable(0);
     app.removeClickableObject(b);
 
@@ -350,8 +350,8 @@ void manageYearThreeOptionals(std::vector<Materie>& materii, std::vector<std::sh
 
 void manageFacultatives(std::vector<Materie>& materii, std::vector<std::shared_ptr<Obiect>>& butoane_facultative, std::vector<Materie>& facultative_selectate, Aplicatie& app)
 {
-    auto b = std::dynamic_pointer_cast<Buton>(app.getClick());
-    b->changeColor(sf::Color::Cyan);
+    auto b = std::dynamic_pointer_cast<Buton<OptFacSelectionClick>>(app.getClick());
+    b->animateClick();
     b->setClickable(0);
     app.removeClickableObject(b);
 
@@ -708,7 +708,7 @@ void manageInputClick(Aplicatie& app)
 void manageSaveClick(std::vector<NoteMaterie>& notare_materii, Aplicatie& app, std::vector<Materie>& materii, const int serie, std::shared_ptr<Obiect>& titlu_medie_finala_bursa,
     std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget, std::shared_ptr<Obiect>& total_credite_display, NoteMaterie& m, const int i)
 {
-    std::shared_ptr<Buton> sav = std::dynamic_pointer_cast<Buton>(app.getClick());
+    std::shared_ptr<Buton<GradeSaveClick>> sav = std::dynamic_pointer_cast<Buton<GradeSaveClick>>(app.getClick());
     sav->changeAnimationColor(sf::Color::Green);
     try
     {
