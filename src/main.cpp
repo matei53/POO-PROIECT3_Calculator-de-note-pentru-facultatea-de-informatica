@@ -5,15 +5,6 @@
 #include "ObiectFactory.h"
 #include <fstream>
 
-struct NoteMaterie
-{
-    std::shared_ptr<Obiect> titlu_materie;
-    std::shared_ptr<Obiect> nota_finala;
-    std::vector<std::shared_ptr<Obiect>> metode_evaluare;
-    std::vector<std::shared_ptr<Obiect>> inputuri;
-    std::vector<std::shared_ptr<Obiect>> salvari;
-};
-
 void checkFiles()
 {
     std::ifstream fg("..\\..\\..\\..\\src\\Roboto-Black.ttf");
@@ -428,7 +419,8 @@ void addPageTwoSideObjects(std::shared_ptr<Obiect>& titlu_medie_finala_bursa, st
 }
 
 void addPageTwoSubjectInputs(std::vector<Materie>& materii, const int an, const int serie, std::vector<Materie>& optionale_selectate, std::vector<Materie>& facultative_selectate,
-    std::vector<NoteMaterie>& notare_materii, sf::Font& font, Aplicatie& app, std::shared_ptr<Obiect>& titlu_medie_finala_bursa)
+    std::vector<std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>>>& notare_materii,
+    sf::Font& font, Aplicatie& app, std::shared_ptr<Obiect>& titlu_medie_finala_bursa)
 {
     float x = 5, y = 5;
     for (Materie m : materii)
@@ -444,21 +436,21 @@ void addPageTwoSubjectInputs(std::vector<Materie>& materii, const int an, const 
                 x = 5; y = 645;
             }
             float y1 = y;
-            NoteMaterie M;
-            M.titlu_materie = ObiectFactory::titlu_materie({ x, y1 }, m.getNume(), font);
+            std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>> M;
+            std::get<0>(M) = ObiectFactory::titlu_materie({ x, y1 }, m.getNume(), font);
             if (m.getNotare(serie)->getNotaFinala() != -1 && m.getNotare(serie)->getNotaFinala() < 5)
             {
-                M.titlu_materie->changeColor(sf::Color::Red);
+                std::get<0>(M)->changeColor(sf::Color::Red);
                 titlu_medie_finala_bursa->changeColor(sf::Color::Red);
             }
-            M.titlu_materie->align();
-            app.addObject(M.titlu_materie);
+            std::get<0>(M)->align();
+            app.addObject(std::get<0>(M));
             if (m.getNotare(serie)->getNotaFinala() == -1)
-                M.nota_finala = ObiectFactory::nota_finala({ x + 235, y1 }, "", font);
+                std::get<1>(M) = ObiectFactory::nota_finala({ x + 235, y1 }, "", font);
             else
-                M.nota_finala = ObiectFactory::nota_finala({ x + 235, y1 }, std::to_string(m.getNotare(serie)->getNotaFinala()), font);
-            app.addObject(M.nota_finala);
-            M.nota_finala->align();
+                std::get<1>(M) = ObiectFactory::nota_finala({ x + 235, y1 }, std::to_string(m.getNotare(serie)->getNotaFinala()), font);
+            app.addObject(std::get<1>(M));
+            std::get<1>(M)->align();
             for (std::shared_ptr<Evaluare> e : m.getNotare(serie)->getEvals())
             {
                 y1 += 35;
@@ -471,19 +463,19 @@ void addPageTwoSubjectInputs(std::vector<Materie>& materii, const int an, const 
                     inp = ObiectFactory::input_note({ x + 160, y1 }, "> " + std::to_string(e->getNota()).substr(0, 5), font);
                 if (e->getNota() < e->getPrag() && e->getNota() != -1)
                 {
-                    M.titlu_materie->changeColor(sf::Color::Red);
+                    std::get<0>(M)->changeColor(sf::Color::Red);
                     titlu_medie_finala_bursa->changeColor(sf::Color::Red);
                 }
                 auto save = ObiectFactory::buton_salvare({ x + 240, y1 }, "OK", font);
                 ev->align(); inp->align(); save->align();
                 inp->setClickable(1);
                 save->setClickable(1);
-                M.metode_evaluare.push_back(ev);
-                M.inputuri.push_back(inp);
-                M.salvari.push_back(save);
-                app.addObject(M.metode_evaluare.back());
-                app.addObject(M.inputuri.back());
-                app.addObject(M.salvari.back());
+                std::get<2>(M).push_back(ev);
+                std::get<3>(M).push_back(inp);
+                std::get<4>(M).push_back(save);
+                app.addObject(std::get<2>(M).back());
+                app.addObject(std::get<3>(M).back());
+                app.addObject(std::get<4>(M).back());
             }
             notare_materii.push_back(M);
             x += 280;
@@ -552,33 +544,33 @@ void saveFinalGrade(std::vector<Materie>& materii, const int serie, const int j)
     g.close();
 }
 
-void setFinals(std::vector<NoteMaterie>& notare_materii, std::vector<Materie>& materii, std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget,
-    std::shared_ptr<Obiect>& total_credite_display)
+void setFinals(std::vector<std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>>>& notare_materii,
+    std::vector<Materie>& materii, std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget, std::shared_ptr<Obiect>& total_credite_display)
 {
     float nota_bursa = 0;
     int puncte_buget = 0;
     int total_credite = 0, credite_obtinute = 0;
-    for (NoteMaterie final : notare_materii)
+    for (std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>> final : notare_materii)
     {
-        if (final.nota_finala->getText() != "")
+        if (std::get<1>(final)->getText() != "")
         {
             int credite = 0; bool trecere = 1, facl = 0;
             for (Materie mt : materii)
             {
-                if (final.titlu_materie->getText() == mt.getNume())
+                if (std::get<0>(final)->getText() == mt.getNume())
                 {
                     if (mt.isFacultativ()) facl = 1;
                     credite = mt.getCredit();
-                    if (final.titlu_materie->getColor() == sf::Color::Red) trecere = 0;
+                    if (std::get<0>(final)->getColor() == sf::Color::Red) trecere = 0;
                     break;
                 }
             }
-            nota_bursa += std::stof(final.nota_finala->getText());
+            nota_bursa += std::stof(std::get<1>(final)->getText());
             if (!facl)
             {
                 if (trecere)
                 {
-                    puncte_buget += std::stof(final.nota_finala->getText()) * credite;
+                    puncte_buget += std::stof(std::get<1>(final)->getText()) * credite;
                     credite_obtinute += credite;
                 }
                 total_credite += credite;
@@ -589,7 +581,7 @@ void setFinals(std::vector<NoteMaterie>& notare_materii, std::vector<Materie>& m
             int credite = 0; bool  facl = 0;
             for (Materie mt : materii)
             {
-                if (final.titlu_materie->getText() == mt.getNume())
+                if (std::get<0>(final)->getText() == mt.getNume())
                 {
                     if (mt.isFacultativ()) facl = 1;
                     credite = mt.getCredit();
@@ -615,9 +607,10 @@ void setFinals(std::vector<NoteMaterie>& notare_materii, std::vector<Materie>& m
     total_credite_display->align();
 }
 
-void manageInputedGrade(std::vector<NoteMaterie>& notare_materii, Aplicatie& app, std::vector<Materie>& materii, const int serie, std::shared_ptr<Obiect>& titlu_medie_finala_bursa,
-    std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget, std::shared_ptr<Obiect>& total_credite_display, NoteMaterie& m, const float grade,
-    const int i, const int j)
+void manageInputedGrade(std::vector<std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>>>& notare_materii,
+    Aplicatie& app, std::vector<Materie>& materii, const int serie, std::shared_ptr<Obiect>& titlu_medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget,
+    std::shared_ptr<Obiect>& total_credite_display, std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>>& m,
+    const float grade, const int i, const int j)
 {
     bool prag_fail = 0, fail = 0, complet = 1;
 
@@ -627,7 +620,7 @@ void manageInputedGrade(std::vector<NoteMaterie>& notare_materii, Aplicatie& app
     materii[j].getNotare(serie)->getEvals()[i]->setNota(grade);
     saveGrade(materii, serie, grade, i, j);
 
-    for (int k = 0; k < m.salvari.size() && fail == 0; k++)
+    for (int k = 0; k < std::get<4>(m).size() && fail == 0; k++)
         if (materii[j].getNotare(serie)->getEvals()[k]->getNota() < materii[j].getNotare(serie)->getEvals()[k]->getPrag() && materii[j].getNotare(serie)->getEvals()[k]->getNota() != -1)
             fail = 1;
 
@@ -635,13 +628,13 @@ void manageInputedGrade(std::vector<NoteMaterie>& notare_materii, Aplicatie& app
     {
         prag_fail = 0;
 
-        if (m.titlu_materie->getColor() == sf::Color::Red)
+        if (std::get<0>(m)->getColor() == sf::Color::Red)
         {
-            m.titlu_materie->changeColor(sf::Color::Green);
+            std::get<0>(m)->changeColor(sf::Color::Green);
 
             bool brs = 1;
-            for (NoteMaterie mbr : notare_materii)
-                if (mbr.titlu_materie->getColor() == sf::Color::Red)
+            for (std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>> mbr : notare_materii)
+                if (std::get<0>(mbr)->getColor() == sf::Color::Red)
                 {
                     brs = 0;
                     break;
@@ -654,9 +647,9 @@ void manageInputedGrade(std::vector<NoteMaterie>& notare_materii, Aplicatie& app
     {
         prag_fail = 1;
 
-        if (m.titlu_materie->getColor() == sf::Color::Green)
+        if (std::get<0>(m)->getColor() == sf::Color::Green)
         {
-            m.titlu_materie->changeColor(sf::Color::Red);
+            std::get<0>(m)->changeColor(sf::Color::Red);
             titlu_medie_finala_bursa->changeColor(sf::Color::Red);
         }
     }
@@ -670,18 +663,18 @@ void manageInputedGrade(std::vector<NoteMaterie>& notare_materii, Aplicatie& app
         materii[j].getNotare(serie)->calculNotaFinala();
         saveFinalGrade(materii, serie, j);
 
-        if (materii[j].getNotare(serie)->getNotaFinala() < 5 && m.titlu_materie->getColor() == sf::Color::Green)
+        if (materii[j].getNotare(serie)->getNotaFinala() < 5 && std::get<0>(m)->getColor() == sf::Color::Green)
         {
-            m.titlu_materie->changeColor(sf::Color::Red);
+            std::get<0>(m)->changeColor(sf::Color::Red);
             titlu_medie_finala_bursa->changeColor(sf::Color::Red);
         }
-        else if (materii[j].getNotare(serie)->getNotaFinala() >= 5 && m.titlu_materie->getColor() == sf::Color::Red && prag_fail == 0)
+        else if (materii[j].getNotare(serie)->getNotaFinala() >= 5 && std::get<0>(m)->getColor() == sf::Color::Red && prag_fail == 0)
         {
-            m.titlu_materie->changeColor(sf::Color::Green);
+            std::get<0>(m)->changeColor(sf::Color::Green);
 
             bool brs = 1;
-            for (NoteMaterie mbr : notare_materii)
-                if (mbr.titlu_materie->getColor() == sf::Color::Red)
+            for (std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>> mbr : notare_materii)
+                if (std::get<0>(mbr)->getColor() == sf::Color::Red)
                 {
                     brs = 0;
                     break;
@@ -689,8 +682,8 @@ void manageInputedGrade(std::vector<NoteMaterie>& notare_materii, Aplicatie& app
             if (brs == 1)
                 titlu_medie_finala_bursa->changeColor(sf::Color::Magenta);
         }
-        m.nota_finala->setText(std::to_string(materii[j].getNotare(serie)->getNotaFinala()));
-        m.nota_finala->align();
+        std::get<1>(m)->setText(std::to_string(materii[j].getNotare(serie)->getNotaFinala()));
+        std::get<1>(m)->align();
 
         setFinals(notare_materii, materii, medie_finala_bursa, medie_finala_buget, total_credite_display);
     }
@@ -705,14 +698,16 @@ void manageInputClick(Aplicatie& app)
     app.setActiveInput(inp);
 }
 
-void manageSaveClick(std::vector<NoteMaterie>& notare_materii, Aplicatie& app, std::vector<Materie>& materii, const int serie, std::shared_ptr<Obiect>& titlu_medie_finala_bursa,
-    std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget, std::shared_ptr<Obiect>& total_credite_display, NoteMaterie& m, const int i)
+void manageSaveClick(std::vector<std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>>>& notare_materii,
+    Aplicatie& app, std::vector<Materie>& materii, const int serie, std::shared_ptr<Obiect>& titlu_medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget,
+    std::shared_ptr<Obiect>& total_credite_display, std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>,
+    std::vector<std::shared_ptr<Obiect>>>& m, const int i)
 {
     std::shared_ptr<Buton<GradeSaveClick>> sav = std::dynamic_pointer_cast<Buton<GradeSaveClick>>(app.getClick());
     sav->changeAnimationColor(sf::Color::Green);
     try
     {
-        std::string grade_string = m.inputuri.at(i)->getText().substr(2);
+        std::string grade_string = std::get<3>(m).at(i)->getText().substr(2);
         if (grade_string != "" && grade_string.back() == '|') grade_string.pop_back();
         if (std::count(grade_string.begin(), grade_string.end(), '.') > 1 || grade_string == "." || grade_string == "")
             throw InvalidInputError(sf::Color::Red);
@@ -722,7 +717,7 @@ void manageSaveClick(std::vector<NoteMaterie>& notare_materii, Aplicatie& app, s
 
         for (int j = 0; j < materii.size(); j++)
         {
-            if (m.titlu_materie->getText() == materii[j].getNume())
+            if (std::get<0>(m)->getText() == materii[j].getNume())
             {
                 manageInputedGrade(notare_materii, app, materii, serie, titlu_medie_finala_bursa, medie_finala_bursa, medie_finala_buget, total_credite_display, m, grade, i, j);
                 break;
@@ -736,20 +731,21 @@ void manageSaveClick(std::vector<NoteMaterie>& notare_materii, Aplicatie& app, s
     }
 }
 
-void manageGradeInputs(std::vector<NoteMaterie>& notare_materii, Aplicatie& app, std::vector<Materie>& materii, const int serie, std::shared_ptr<Obiect>& titlu_medie_finala_bursa,
-    std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget, std::shared_ptr<Obiect>& total_credite_display)
+void manageGradeInputs(std::vector<std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>>>& notare_materii,
+    Aplicatie& app, std::vector<Materie>& materii, const int serie, std::shared_ptr<Obiect>& titlu_medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_bursa, std::shared_ptr<Obiect>& medie_finala_buget,
+    std::shared_ptr<Obiect>& total_credite_display)
 {
-    for (NoteMaterie m : notare_materii)
+    for (std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>> m : notare_materii)
     {
-        if (isInVector<std::shared_ptr<Obiect>>(m.inputuri, app.getClick()))
+        if (isInVector<std::shared_ptr<Obiect>>(std::get<3>(m), app.getClick()))
         {
             manageInputClick(app);
             app.setClick(nullptr);
             break;
         }
         else
-            for (int i = 0; i < m.salvari.size(); i++)
-                if (m.salvari.at(i) == app.getClick())
+            for (int i = 0; i < std::get<4>(m).size(); i++)
+                if (std::get<4>(m).at(i) == app.getClick())
                 {
                     manageSaveClick(notare_materii, app, materii, serie, titlu_medie_finala_bursa, medie_finala_bursa, medie_finala_buget, total_credite_display, m, i);
                     app.setClick(nullptr);
@@ -790,7 +786,7 @@ int main()
         std::vector<std::shared_ptr<Obiect>> butoane_optionale;
         std::vector<Materie> optionale_selectate;
 
-        std::vector<NoteMaterie> notare_materii;
+        std::vector<std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>>> notare_materii;
 
         std::shared_ptr<Obiect> titlu_medie_finala_bursa;
         std::shared_ptr<Obiect> medie_finala_bursa;
@@ -808,8 +804,7 @@ int main()
 
         while (app.isRunning())
         {
-            app.update();
-            app.render();
+            app.updateandrender();
 
             if (app.getClick())
             {

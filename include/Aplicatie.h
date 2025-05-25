@@ -32,8 +32,7 @@ public:
 	void setClick(std::shared_ptr<Obiect>);
 	std::shared_ptr<Obiect> getClick();
 
-	void update();
-	void render();
+	void updateandrender();
 
 	const bool isRunning() const;
 

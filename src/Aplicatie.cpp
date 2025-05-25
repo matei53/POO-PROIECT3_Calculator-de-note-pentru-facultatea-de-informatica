@@ -21,7 +21,8 @@ std::shared_ptr<Obiect> Aplicatie::getClick()
     return clicked;
 }
 
-void Aplicatie::update() {
+void Aplicatie::updateandrender()
+{
     updateEvents();
     updateMousePosition();
 
@@ -29,9 +30,7 @@ void Aplicatie::update() {
     {
         object->update();
     }
-}
 
-void Aplicatie::render() {
     window.clear(sf::Color::White);
     for (std::shared_ptr<Obiect> object : obiecte)
     {
