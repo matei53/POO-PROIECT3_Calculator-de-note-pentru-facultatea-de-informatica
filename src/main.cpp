@@ -699,9 +699,9 @@ void manageInputedGrade(std::vector<NoteMaterie>& notare_materii, Aplicatie& app
 void manageInputClick(Aplicatie& app)
 {
     if (app.getActiveInput())
-        app.getActiveInput()->stopAnimation();
+        app.getActiveInput()->off();
     auto inp = std::dynamic_pointer_cast<TextInput>(app.getClick());
-    inp->animateInput();
+    inp->on();
     app.setActiveInput(inp);
 }
 

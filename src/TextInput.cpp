@@ -1,7 +1,10 @@
 #include "TextInput.h"
 
 TextInput::TextInput(const sf::Vector2f& poz, const sf::Vector2f& mar, const unsigned int mar_font, const std::string& text_, const sf::Font& font,
-	const sf::Color& culoare_, const int limita) : Obiect{ poz, mar, mar_font, text_, font, culoare_ }, limita_caractere{ limita } { }
+	const sf::Color& culoare_, const int limita) : Obiect{ poz, mar, mar_font, text_, font, culoare_ }, limita_caractere{ limita }
+{
+	activ = std::make_shared<InactiveState>();
+}
 
 //std::shared_ptr<Obiect> TextInput::clone() const
 //{
@@ -56,7 +59,7 @@ void TextInput::popCharacter()
 
 void TextInput::animateInput()
 {
-	if (!clock) clock = std::make_unique<sf::Clock>();
+	if (!clock) clock = std::make_shared<sf::Clock>();
 	clock->restart();
 }
 
@@ -69,4 +72,30 @@ void TextInput::stopAnimation()
 		text_string.pop_back();
 		text.setString(text_string);
 	}
+}
+
+void TextInput::setState(std::shared_ptr<State> s)
+{
+	activ = s;
+}
+void TextInput::on()
+{
+	activ->active(this);
+}
+void TextInput::off()
+{
+	activ->inactive(this);
+}
+
+void State::active(TextInput* inp) { return; }
+void State::inactive(TextInput* inp) { return; }
+void ActiveState::inactive(TextInput* inp)
+{
+	inp->stopAnimation();
+	inp->setState(std::make_shared<InactiveState>());
+}
+void InactiveState::active(TextInput* inp)
+{
+	inp->animateInput();
+	inp->setState(std::make_shared<ActiveState>());
 }

@@ -3,8 +3,11 @@
 
 #include "Obiect.h"
 
+class State;
+
 class TextInput : public Obiect
 {
+	std::shared_ptr<State> activ;
 	int limita_caractere;
 
 public:
@@ -18,6 +21,29 @@ public:
 
 	void animateInput();
 	void stopAnimation();
+
+	void setState(std::shared_ptr<State>);
+	void on();
+	void off();
+};
+
+class State
+{
+public:
+	virtual void active(TextInput*);
+	virtual void inactive(TextInput*);
+};
+
+class ActiveState : public State
+{
+public:
+	void inactive(TextInput*);
+};
+
+class InactiveState : public State
+{
+public:
+	void active(TextInput*);
 };
 
 #endif
