@@ -787,6 +787,7 @@ int main()
         std::vector<Materie> optionale_selectate;
 
         std::vector<std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>>> notare_materii;
+        //0 - titlu materie | 1 - nota finala | 2 - metode de evaluare | 3 - inputuri | 4 - butoane salvare
 
         std::shared_ptr<Obiect> titlu_medie_finala_bursa;
         std::shared_ptr<Obiect> medie_finala_bursa;
