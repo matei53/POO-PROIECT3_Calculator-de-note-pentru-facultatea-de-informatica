@@ -2,6 +2,7 @@
 #define FUNCTIITEMPLATE_H
 
 #include <vector>
+#include <algorithm>
 
 template <class T>
 bool isInVector(std::vector<T> vect, T obj)
