@@ -9,7 +9,7 @@ class InvalidFilePathError : public std::exception
 
 public:
 	InvalidFilePathError(const char* msg) : mesaj{ msg } { }
-	const char* what() const
+	const char* what() const override
 	{
 		return mesaj;
 	}
@@ -34,7 +34,7 @@ class InvalidFileContentError : public std::exception
 
 public:
 	InvalidFileContentError(const char* msg, const unsigned int line) : mesaj{ msg }, linie{ line } {}
-	const char* what() const
+	const char* what() const override
 	{
 		return mesaj;
 	}
