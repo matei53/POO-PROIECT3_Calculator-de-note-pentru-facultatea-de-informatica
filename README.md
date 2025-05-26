@@ -1,5 +1,7 @@
 # Calculator de note pentru studenții de informatică din cadrul FMI (PROIECTUL 3)
 
+## Acest proiect este o continuare a proiectului 2, ce poate fi văzut [aici](https://github.com/matei53/Calculator-de-note-pentru-facultatea-de-informatica).
+
 ## Descriere generală
 
 Această aplicație ajută la calcularea mediei finale pentru domeniul informatică, anul universitar 2024-2025.
@@ -44,7 +46,7 @@ Clasa *State* conține funcțiile virtuale **active(TextInput\*)** și **inactiv
 
 Funcțiile din clasa de bază pot fi apelate numai în cazul în care încercăm să dezactivăm un input deja inactiv sau să activăm un input deja activ, caz în care nu se întâmplă nimic. Schimbarea stării atributului se face cu funcția *setState*, descrisă mai jos.
 
-La clasa *TextInput* s-au adăugat membrul *activ* de tip std::shared_ptr<State> (inițializat cu pointer la InactiveState), și funcțiile **on()**, **off()** și **setState(std::shared_ptr<State>)**.
+La clasa *TextInput* s-au adăugat membrul *activ* de tip std::shared_ptr\<State> (inițializat cu pointer la InactiveState), și funcțiile **on()**, **off()** și **setState(std::shared_ptr\<State>)**.
 
 Funția *on* face membrul *activ* să apeleze funcția *active(this)* (efectiv, activează inputul), iar funția *off* face membrul *activ* să apeleze funcția *inactive(this)* (efectiv, dezactivează inputul). Funcția *setState(s)* schimbă starea lui *activ* la *s*.
 
@@ -71,7 +73,12 @@ Această funcție este folosită:
 
 ## Clasă șablon - Buton<TipAnimație>
 
-a
+Clasa **Buton** a fost transformată în clasă șablon, având un membru șablon ce reprezintă tipul de animație a click-ului.
+
+Tipurile de animație au fost implementate cu clasele:
+1. **SeriesSelectionClick** (butonul își schimbă culoarea pentru o durată de timp, iar apoi revine la cea inițială);
+2. **OptFacSelectionClick** (butonul alternează între două culori);
+3. **GradeSaveClick** ().
 
 ## Resurse
 
