@@ -927,21 +927,46 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Algoritmi fundamentali
@@ -951,21 +976,41 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Sisteme de gestiune a bazelor de date
@@ -999,21 +1044,46 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Sisteme de operare
@@ -1023,21 +1093,41 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Inteligenta artificiala
@@ -1047,21 +1137,51 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
 nota: -1
-nota_finala_seria5: -1
-Examen
-parte: 10
+Colocviu
+parte: 3
 max: 10
 prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
+nota: -1
+nota_finala_seria5: -1
+Examen
+parte: 7
+max: 10
+prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 -
 Algoritmi avansati
@@ -1095,21 +1215,46 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Metode de dezvoltare software
@@ -1119,21 +1264,41 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Retele de calculatoare
@@ -1143,21 +1308,51 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
 nota: -1
-nota_finala_seria5: -1
-Examen
-parte: 10
+Colocviu
+parte: 3
 max: 10
 prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
+nota: -1
+nota_finala_seria5: -1
+Examen
+parte: 7
+max: 10
+prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 -
 Programare avansata pe obiecte in Java
@@ -1167,21 +1362,41 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Limba straina 3
@@ -1239,21 +1454,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Aplicatii Web in Django
@@ -1263,21 +1503,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Aplicatii Web in PHP
@@ -1287,21 +1552,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Educatie fizica si metodica 2
@@ -1359,21 +1649,41 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Inginerie software
@@ -1383,21 +1693,46 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Securitatea sistemelor informatice
@@ -1407,21 +1742,41 @@ optional: 0
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Calcul numeric in informatica
@@ -1431,21 +1786,51 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
 nota: -1
-nota_finala_seria5: -1
-Examen
-parte: 10
+Colocviu
+parte: 3
 max: 10
 prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
+nota: -1
+nota_finala_seria5: -1
+Examen
+parte: 7
+max: 10
+prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 -
 Concepte in Vederea Artificiala
@@ -1455,21 +1840,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Grafica pe calculator
@@ -1503,21 +1913,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Reinforcement Learning
@@ -1527,21 +1957,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Java Script server side
@@ -1551,21 +2006,51 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
 nota: -1
-nota_finala_seria5: -1
-Examen
-parte: 10
+Colocviu
+parte: 3
 max: 10
 prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
+nota: -1
+nota_finala_seria5: -1
+Examen
+parte: 7
+max: 10
+prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 -
 Prelucrarea semnalelor
@@ -1575,21 +2060,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Robotic Process Automation (UiPath)
@@ -1623,21 +2128,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Arheologia masinilor inteligente
@@ -1671,21 +2201,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Structuri de date avansate
@@ -1695,21 +2245,51 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
 nota: -1
-nota_finala_seria5: -1
-Examen
-parte: 10
+Colocviu
+parte: 3
 max: 10
 prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
+nota: -1
+nota_finala_seria5: -1
+Examen
+parte: 7
+max: 10
+prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 -
 Prog. in realitatea virtuala
@@ -1743,21 +2323,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Programare diferentiabila
@@ -1767,21 +2367,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Verificare cu proof assistants
@@ -1791,21 +2416,51 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
 nota: -1
-nota_finala_seria5: -1
-Examen
-parte: 10
+Colocviu
+parte: 3
 max: 10
 prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
+nota: -1
+nota_finala_seria5: -1
+Examen
+parte: 7
+max: 10
+prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 -
 Tehnologii cloud computing
@@ -1815,21 +2470,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Blockchain
@@ -1887,21 +2562,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Aplicatii Web grafice si calcul GPU
@@ -1911,21 +2606,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Tehnici de demonstrare
@@ -1935,21 +2655,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Metode nucleu in invatarea auto
@@ -2007,21 +2747,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Prelucrarea limbajului natural
@@ -2031,21 +2791,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Invatarea retelelor neurale adanci
@@ -2055,21 +2840,51 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
 nota: -1
-nota_finala_seria5: -1
-Examen
-parte: 10
+Colocviu
+parte: 3
 max: 10
 prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
+nota: -1
+nota_finala_seria5: -1
+Examen
+parte: 7
+max: 10
+prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 -
 Invatare auto in Vedere Artificiala
@@ -2079,21 +2894,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Metode in Ingineria Software
@@ -2151,21 +2986,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Protocoale criptografice
@@ -2175,21 +3035,51 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
 nota: -1
-nota_finala_seria5: -1
-Examen
-parte: 10
+Colocviu
+parte: 3
 max: 10
 prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
+nota: -1
+nota_finala_seria5: -1
+Examen
+parte: 7
+max: 10
+prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 -
 Testarea Sistemelor Software
@@ -2199,21 +3089,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Planificare a unei echipe de roboti
@@ -2295,21 +3205,46 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
 -
 Procesarea semnalelor audio
@@ -2319,21 +3254,51 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 7
 max: 10
 prag: 5
 nota: -1
-nota_finala_seria5: -1
-Examen
-parte: 10
+Colocviu
+parte: 3
 max: 10
 prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
+nota: -1
+nota_finala_seria5: -1
+Examen
+parte: 7
+max: 10
+prag: 5
+nota: -1
+Colocviu
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Activitate sem.
+parte: 1
+max: 10
+prag: 0
 nota: -1
 -
 Algoritmi paraleli
@@ -2367,21 +3332,41 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 6.66
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3.34
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 6.66
+max: 10
+prag: 5
+nota: -1
+Laborator
+parte: 3.34
 max: 10
 prag: 5
 nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
 prag: 5
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 5
+nota: -1
+Seminar
+parte: 3
+max: 10
+prag: 1.5
 nota: -1
 -
 Specificare si verificare formala
@@ -2391,19 +3376,44 @@ optional: 1
 facultativ: 0
 nota_finala_seria3: -1
 Examen
-parte: 10
+parte: 5
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 5
+max: 10
+prag: 0
 nota: -1
 nota_finala_seria4: -1
 Examen
-parte: 10
+parte: 5
 max: 10
 prag: 5
 nota: -1
+Laborator
+parte: 2
+max: 10
+prag: 0
+nota: -1
+Proiect
+parte: 3
+max: 10
+prag: 0
+nota: -1
 nota_finala_seria5: -1
 Examen
-parte: 10
+parte: 4
 max: 10
-prag: 5
+prag: 0
+nota: -1
+Laborator
+parte: 3
+max: 10
+prag: 0
+nota: -1
+Activitate
+parte: 3
+max: 10
+prag: 0
 nota: -1
