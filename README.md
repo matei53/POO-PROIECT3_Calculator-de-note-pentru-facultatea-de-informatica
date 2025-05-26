@@ -77,8 +77,8 @@ Clasa **Buton** a fost transformată în clasă șablon, având un membru șablo
 
 Tipurile de animație au fost implementate cu clasele:
 1. **SeriesSelectionClick** (butonul își schimbă culoarea pentru o durată de timp, iar apoi revine la cea inițială);
-2. **OptFacSelectionClick** (butonul alternează între două culori);
-3. **GradeSaveClick** ().
+2. **OptFacSelectionClick** (butonul alternează între două culori la infinit);
+3. **GradeSaveClick** (butonul își schimbă culoarea în ordinea culoare secundară - culoare inițială - culoare secundară - culoare inițială).
 
 ## Resurse
 
