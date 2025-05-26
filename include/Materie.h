@@ -3,10 +3,6 @@
 
 #include "Notare.h"
 
-#include <iostream>
-#include <string>
-#include <vector>
-
 class Materie
 {
     std::string nume;
