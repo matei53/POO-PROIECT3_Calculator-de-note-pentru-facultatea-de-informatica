@@ -28,14 +28,25 @@ Implementarea presupune:
 
 ### Factory (ObiectFactory.h)
 
-Acest design pattern este implementat în clasa **ObiectFactory**, care conține numai funcții statice publice ce returnează
+Acest design pattern este implementat în clasa **ObiectFactory**, care conține numai funcții statice publice ce returnează diverse obiecte ce urmează anumite formate. Aceste funcții au ca atribute poziția obiectului în fereastră, textul și fontul obiectului.
+
+Aceste funcții simplifică crearea:
+1. butoanelor de alegere a seriei;
+2. butoanelor de alegere a materiilor opționale/facultative;
+3. căsuțelor cu titlul materiei, nota finală, metodele de evaluare, inputurile, salvările (pentru fiecare materie);
+4. căsuțelor cu media finală, punctajul de credit și numărul de credite.
 
 ### State
 
 Acest design pattern este implementat în clasa **TextInput**, prin clasa **State** (cu derivatele **ActiveState** și **InactiveState**).
 
-Clasa *State* conține funcțiile virtuale **active(TextInput\*)** și **inactive(TextInput\*)**, clasa *ActiveState* conține funcția **inactive(TextInput\*)** (care schimbă starea atributului la tipul InactiveState), iar clasa *InactiveState* conține funcția **active(TextInput\*)** (care schimbă starea atributului la tipul ActiveState). Funcțiile din clasa de bază vor fi apelate
+Clasa *State* conține funcțiile virtuale **active(TextInput\*)** și **inactive(TextInput\*)**, clasa *ActiveState* conține funcția **inactive(TextInput\*)** (care schimbă starea atributului la tipul InactiveState), iar clasa *InactiveState* conține funcția **active(TextInput\*)** (care schimbă starea atributului la tipul ActiveState).
+
+Funcțiile din clasa de bază pot fi apelate numai în cazul în care încercăm să dezactivăm un input deja inactiv sau să activăm un input deja activ, caz în care nu se întâmplă nimic. Schimbarea stării atributului se face cu funcția *setState*, descrisă mai jos.
+
 La clasa *TextInput* s-au adăugat membrul *activ* de tip std::shared_ptr<State> (inițializat cu pointer la InactiveState), și funcțiile **on()**, **off()** și **setState(std::shared_ptr<State>)**.
+
+Funția *on* face membrul *activ* să apeleze funcția *active(this)* (efectiv, activează inputul), iar funția *off* face membrul *activ* să apeleze funcția *inactive(this)* (efectiv, dezactivează inputul). Funcția *setState(s)* schimbă starea lui *activ* la *s*.
 
 ## Funcții șablon (FuncțiiTemplate.h)
 
