@@ -1,4 +1,6 @@
-# Calculator de note pentru studenții de informatică din cadrul FMI
+# Calculator de note pentru studenții de informatică din cadrul FMI (PROIECTUL 3)
+
+## Acest proiect este o continuare a proiectului 2, ce poate fi văzut [aici](https://github.com/matei53/Calculator-de-note-pentru-facultatea-de-informatica).
 
 ## Descriere generală
 
@@ -16,45 +18,69 @@ Nota finală a unei materii este calculată după ce au fost introduse toate not
 
 Pentru a ieși din aplicație apăsați ESC.
 
-## Clase
+## Design patterns
 
-### Obiect - cu derivatele TitleText (căsuță de text simplă), Buton, TextInput (căsuță pentru introducerea notelor)
+### Singleton
 
-Acestea reprezintă cele trei tipuri de obiecte ce vor putea fi văzute în interfață.
+Acest design pattern este implementat în clasa Aplicație, și ne asigură că poate exista o singură instanță a aplicației la un moment dat.
 
-Un obiect se declară cu următoarele valori: poziția și mărimea pe interfață, mărimea fontului, textul, font și culoare. Pentru un buton, se mai adaugă o culoare pentru animația apăsării, pentru o căsuță de input, se mai adaugă o limită de caractere ce pot fi introduse, iar pentru o căsuță simplă se pot adăuga alte trei culori pentru o animație constantă.
+Implementarea presupune:
+1. ștergerea *constructorului de copiere* și a *operatorului de atribuire (operator=)* din clasă;
+2. crearea funcției statice **getAplicatie()**, care construiește o instanță a aplicației și o returnează.
 
-Aceste clase conțin **funcția virtuală pură *update()***, care se ocupă de animații. Pentru un buton, animația presupune schimbarea culorii acesteia pentru cinci secunde și revenirea la culoarea normală, pentru o căsuță simplă, animația presupune schimbarea culorii acesteia odată la cinci secunde, iar pentru o căsuță de input, animația presupune apariția și dispariția caracterului '|' pentru a indica că acel input este activ.
+### Factory (ObiectFactory.h)
 
-În plus, mai este și **funcția virtuală *align()***, care aliniază textul la stânga pentru căsuța de text simplă, și în centru pentru restul obiectelor.
+Acest design pattern este implementat în clasa **ObiectFactory**, care conține numai funcții statice publice ce returnează diverse obiecte ce urmează anumite formate. Aceste funcții au ca atribute poziția obiectului în fereastră, textul și fontul obiectului.
 
-Aceste funcții virtuale sunt **apelate prin pointeri *(sunt folosiți numai smart pointers)* la clasa Obiect**. Dacă este nevoie de o apelare a unei funcții care face parte numai dintr-o clasă derivată, se folosește **std::dynamic_pointer_cast<derivată>()** pentru a o putea accesa.
+Aceste funcții simplifică crearea:
+1. butoanelor de alegere a seriei;
+2. butoanelor de alegere a materiilor opționale/facultative;
+3. căsuțelor cu titlul materiei, nota finală, metodele de evaluare, inputurile, salvările (pentru fiecare materie);
+4. căsuțelor cu media finală, punctajul de credit și numărul de credite.
 
-Acești pointeri la obiecte se pot găsi în main, **dar și în funcțiile clasei Aplicatie**.
+### State
 
-### Aplicatie
+Acest design pattern este implementat în clasa **TextInput**, prin clasa **State** (cu derivatele **ActiveState** și **InactiveState**).
 
-Această clasă este folosită pentru a gestiona interfața.
+Clasa *State* conține funcțiile virtuale **active(TextInput\*)** și **inactive(TextInput\*)**, clasa *ActiveState* conține funcția **inactive(TextInput\*)** (care schimbă starea atributului la tipul InactiveState), iar clasa *InactiveState* conține funcția **active(TextInput\*)** (care schimbă starea atributului la tipul ActiveState).
 
-Aplicația se declară cu lungimea, înălțimea și titlul ferestrei deschise. Clasa mai conține și doi vectori de obiecte, unul care reține toate obiectele din interfață, și altul care reține care dintre ele pot fi apăsate.
+Funcțiile din clasa de bază pot fi apelate numai în cazul în care încercăm să dezactivăm un input deja inactiv sau să activăm un input deja activ, caz în care nu se întâmplă nimic. Schimbarea stării atributului se face cu funcția *setState*, descrisă mai jos.
 
-De asemenea, aici se găsesc **atributele statice *active_input* și *clicked***, care rețin căsuța de input activă, respectiv obiectul apăsat la un anumit moment.
+La clasa *TextInput* s-au adăugat membrul *activ* de tip std::shared_ptr\<State> (inițializat cu pointer la InactiveState), și funcțiile **on()**, **off()** și **setState(std::shared_ptr\<State>)**.
 
-Atributul *clicked* este gestionat de **funcțiile statice *setClick(obiect)* și *getClick()***, iar atributul *active_input* este gestionat de **funcțiile stative *getActiveInput()* și *setActiveInput(căsuță)***.
+Funția *on* face membrul *activ* să apeleze funcția *active(this)* (efectiv, activează inputul), iar funția *off* face membrul *activ* să apeleze funcția *inactive(this)* (efectiv, dezactivează inputul). Funcția *setState(s)* schimbă starea lui *activ* la *s*.
 
-Atâta timp cât fereastra este deschisă, se verifică dacă un obiect a fost apăsat cu *getClick*. Dacă da, atunci se fac modificări pe interfață în funcție de ce a fost apăsat, iar apoi obiectul apăsat se setează la *nullptr*.
+## Funcții șablon (FuncțiiTemplate.h)
 
-### Materie, Notare, Evaluare
+### void eraseFromVector(std::vector\<T>& vect, T obj)
 
-Clasele Materie, Notare și Evaluare sunt folosite pentru a reține toate materiile și metodele de notare pentru fiecare dintre acestea. Fiecare materie are trei metode de notare separate, una pentru fiecare serie. Fiecare metodă de notare cuprinde mai multe evaluări, care au un procentaj din nota finală, un prag de promovare și o notă maximă care poate fi obținută.
+Șterge obiectul *obj* din vectorul de obiecte *vect*.
 
-### InvalidFilePathError, InvalidFileContentError, InvalidInputError - derivate din std:exception
+Această funcție este folosită:
 
-Clasa InvalidFilePathError este folosita atunci cand fișierul cu informațiile despre materii sau cel cu fontul textului nu pot fi incarcate. In acest caz, se va închide fereastra (dacă este deschisă), și se va afișa un mesaj (cu funcția suprascrisă *what*) în terminal legat de problemă.
+1. pentru a șterge materiile cu anul diferit de cel selectat (la alegerea seriei) din vectorul principal de materii;
+2. în funcțiile aplicației *removeObject(obj)* și *removeClickableObject(obj)*, pentru a șterge obiectul apelat din vectorul de obiecte (și, după caz, din vectorul de obiecte clickable) din aplicație.
 
-Clasa InvalidFileContentError este folosită atunci când fișierul cu informațiile despre materii nu conține informatii potrivite pentru program. În acest caz, pe lângă mesaj, se va afișa și linia din fișierul text unde s-a găsit problema.
+### bool isInVector(std::vector\<T> vect, T obj)
 
-Clasa InvalidInputError este folosită atunci când este salvată o notă invalidă introdusă într-o căsuță de input. În acest caz, culoarea de animație a butonului de salvare se va schimba în roșu, iar nota nu se va salva.
+Returnează *true* dacă obiectul *obj* este în vectorul de obiecte *vect*.
+
+Această funcție este folosită:
+
+1. pentru a verifica dacă un obiect apăsat (obținut cu funcția aplicației *getClick()*) se află într-un vector de obiecte (e.g. butoanele de alegere a seriei, butoanele de alegere a materiilor opționale/facultative, căsuțele de introducere a notelor, butoanele de salvare a notelor), pentru a ști ce cod trebuie executat în urma unei apăsări;
+2. în afișarea materiilor opționale/facultative în pagina de introducere a notelor, prin alfarea materiilor care se află și în vectorul principal de materii, și în vectorul de opționale/facultative selectate;
+3. în funcțiile aplicației *removeObject(obj)* și *removeClickableObject(obj)*, pentru a afla dacă obiectul apelat trebuie șters din vectorul de obiecte clickable din aplicație.
+
+## Clasă șablon - Buton\<TipAnimație>
+
+Clasa **Buton** a fost transformată în clasă șablon, având un membru șablon ce reprezintă tipul de animație a click-ului.
+
+Tipurile de animație au fost implementate cu clasele:
+1. **SeriesSelectionClick** (butonul își schimbă culoarea pentru o durată de timp, iar apoi revine la cea inițială);
+2. **OptFacSelectionClick** (butonul alternează între două culori la infinit);
+3. **GradeSaveClick** (butonul își schimbă culoarea în ordinea culoare secundară - culoare inițială - culoare secundară - culoare inițială).
+
+Cele trei clase au funcția membru **animate**, care execută animațiile descrise mai sus. Funcția este apelată prin membrul șablon al clasei Buton menționat mai sus.
 
 ## Resurse
 
