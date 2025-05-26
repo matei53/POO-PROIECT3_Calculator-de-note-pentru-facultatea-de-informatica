@@ -20,26 +20,24 @@ Pentru a ieși din aplicație apăsați ESC.
 
 ### Singleton
 
-a
+Acest design pattern este implementat în clasa Aplicație, și ne asigură cu poate exista o singură instanță a aplicației.
 
-### Factory
+Implementarea presupune:
+1. ștergerea *constructorului de copiere* și a *operatorului de atribuire (operator=)* din clasă;
+2. crearea funcției statice **getAplicatie()**, care construiește o instanță a aplicației și o returnează.
 
-a
+### Factory (ObiectFactory.h)
+
+Acest design pattern este implementat în clasa **ObiectFactory**, care conține numai funcții statice publice ce returnează
 
 ### State
 
-a
+Acest design pattern este implementat în clasa **TextInput**, prin clasa **State** (cu derivatele **ActiveState** și **InactiveState**).
+
+Clasa *State* conține funcțiile virtuale **active(TextInput\*)** și **inactive(TextInput\*)**, clasa *ActiveState* conține funcția **inactive(TextInput\*)** (care schimbă starea atributului la tipul InactiveState), iar clasa *InactiveState* conține funcția **active(TextInput\*)** (care schimbă starea atributului la tipul ActiveState). Funcțiile din clasa de bază vor fi apelate
+La clasa *TextInput* s-au adăugat membrul *activ* de tip std::shared_ptr<State> (inițializat cu pointer la InactiveState), și funcțiile **on()**, **off()** și **setState(std::shared_ptr<State>)**.
 
 ## Funcții șablon (FuncțiiTemplate.h)
-
-### bool isInVector(std::vector<T> vect, T obj)
-
-Returnează *true* dacă obiectul *obj* este în vectorul de obiecte *vect*.
-
-Această funcție este folosită:
-
-1. pentru a verifica dacă un obiect apăsat (obținut cu funcția aplicației *getClick()* se află într-un vector de obiecte (butoanele de alegere a seriei, butoanele de alegere a materiilor opționale/facultative, căsuțele de introducere a notelor, butoanele de salvare a notelor), pentru a ști ce cod trebuie executat în urma unei apăsări;
-2. în afișarea materiilor opționale/facultative în pagina de introducere a notelor, prin alfarea materiilor care se află și în vectorul principal de materii, și în vectorul de opționale/facultative selectate.
 
 ### void eraseFromVector(std::vector<T>& vect, T obj)
 
@@ -48,7 +46,17 @@ Această funcție este folosită:
 Această funcție este folosită:
 
 1. pentru a șterge materiile cu anul diferit de cel selectat (la alegerea seriei) din vectorul principal de materii;
-2. 
+2. în funcțiile aplicației *removeObject(obj)* și *removeClickableObject(obj)*, pentru a șterge obiectul apelat din vectorul de obiecte (și, după caz, din vectorul de obiecte clickable) din aplicație.
+
+### bool isInVector(std::vector<T> vect, T obj)
+
+Returnează *true* dacă obiectul *obj* este în vectorul de obiecte *vect*.
+
+Această funcție este folosită:
+
+1. pentru a verifica dacă un obiect apăsat (obținut cu funcția aplicației *getClick()* se află într-un vector de obiecte (butoanele de alegere a seriei, butoanele de alegere a materiilor opționale/facultative, căsuțele de introducere a notelor, butoanele de salvare a notelor), pentru a ști ce cod trebuie executat în urma unei apăsări;
+2. în afișarea materiilor opționale/facultative în pagina de introducere a notelor, prin alfarea materiilor care se află și în vectorul principal de materii, și în vectorul de opționale/facultative selectate;
+3. în funcțiile aplicației *removeObject(obj)* și *removeClickableObject(obj)*, pentru a afla dacă obiectul apelat trebuie șters din vectorul de obiecte clickable din aplicație.
 
 ## Clasă șablon - Buton<TipAnimație>
 
