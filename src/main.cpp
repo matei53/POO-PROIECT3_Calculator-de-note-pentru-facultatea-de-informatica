@@ -809,9 +809,10 @@ int main()
 
             if (app.getClick())
             {
-                if (isInVector<std::shared_ptr<Obiect>>(butoane_serii, app.getClick()))
+                auto b = app.getClick();
+                if (isInVector<std::shared_ptr<Obiect>>(butoane_serii, b))
                 {
-                    deactivateSeriesButtons(butoane_serii, app.getClick(), app);
+                    deactivateSeriesButtons(butoane_serii, b, app);
                     createForwardButton(buton_inainte, font, app);
 
                     an = app.getClick()->getText().front() - '0';
