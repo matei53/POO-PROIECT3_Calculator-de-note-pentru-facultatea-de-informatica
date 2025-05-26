@@ -2,7 +2,6 @@
 #define OBIECT_H
 
 #include "SFML/Graphics.hpp"
-#include <functional>
 
 class Obiect
 {

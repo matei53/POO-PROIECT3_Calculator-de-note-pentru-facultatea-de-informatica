@@ -7,7 +7,6 @@
 #include "FunctiiTemplate.h"
 
 #include <vector>
-#include <functional>
 
 class Aplicatie
 {
