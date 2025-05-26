@@ -1,4 +1,4 @@
-# Calculator de note pentru studenții de informatică din cadrul FMI
+# Calculator de note pentru studenții de informatică din cadrul FMI (PROIECTUL 3)
 
 ## Descriere generală
 
@@ -16,45 +16,43 @@ Nota finală a unei materii este calculată după ce au fost introduse toate not
 
 Pentru a ieși din aplicație apăsați ESC.
 
-## Clase
+## Design patterns
 
-### Obiect - cu derivatele TitleText (căsuță de text simplă), Buton, TextInput (căsuță pentru introducerea notelor)
+### Singleton
 
-Acestea reprezintă cele trei tipuri de obiecte ce vor putea fi văzute în interfață.
+a
 
-Un obiect se declară cu următoarele valori: poziția și mărimea pe interfață, mărimea fontului, textul, font și culoare. Pentru un buton, se mai adaugă o culoare pentru animația apăsării, pentru o căsuță de input, se mai adaugă o limită de caractere ce pot fi introduse, iar pentru o căsuță simplă se pot adăuga alte trei culori pentru o animație constantă.
+### Factory
 
-Aceste clase conțin **funcția virtuală pură *update()***, care se ocupă de animații. Pentru un buton, animația presupune schimbarea culorii acesteia pentru cinci secunde și revenirea la culoarea normală, pentru o căsuță simplă, animația presupune schimbarea culorii acesteia odată la cinci secunde, iar pentru o căsuță de input, animația presupune apariția și dispariția caracterului '|' pentru a indica că acel input este activ.
+a
 
-În plus, mai este și **funcția virtuală *align()***, care aliniază textul la stânga pentru căsuța de text simplă, și în centru pentru restul obiectelor.
+### State
 
-Aceste funcții virtuale sunt **apelate prin pointeri *(sunt folosiți numai smart pointers)* la clasa Obiect**. Dacă este nevoie de o apelare a unei funcții care face parte numai dintr-o clasă derivată, se folosește **std::dynamic_pointer_cast<derivată>()** pentru a o putea accesa.
+a
 
-Acești pointeri la obiecte se pot găsi în main, **dar și în funcțiile clasei Aplicatie**.
+## Funcții șablon (FuncțiiTemplate.h)
 
-### Aplicatie
+### bool isInVector(std::vector<T> vect, T obj)
 
-Această clasă este folosită pentru a gestiona interfața.
+Returnează *true* dacă obiectul *obj* este în vectorul de obiecte *vect*.
 
-Aplicația se declară cu lungimea, înălțimea și titlul ferestrei deschise. Clasa mai conține și doi vectori de obiecte, unul care reține toate obiectele din interfață, și altul care reține care dintre ele pot fi apăsate.
+Această funcție este folosită:
 
-De asemenea, aici se găsesc **atributele statice *active_input* și *clicked***, care rețin căsuța de input activă, respectiv obiectul apăsat la un anumit moment.
+1. pentru a verifica dacă un obiect apăsat (obținut cu funcția aplicației *getClick()* se află într-un vector de obiecte (butoanele de alegere a seriei, butoanele de alegere a materiilor opționale/facultative, căsuțele de introducere a notelor, butoanele de salvare a notelor), pentru a ști ce cod trebuie executat în urma unei apăsări;
+2. în afișarea materiilor opționale/facultative în pagina de introducere a notelor, prin alfarea materiilor care se află și în vectorul principal de materii, și în vectorul de opționale/facultative selectate.
 
-Atributul *clicked* este gestionat de **funcțiile statice *setClick(obiect)* și *getClick()***, iar atributul *active_input* este gestionat de **funcțiile stative *getActiveInput()* și *setActiveInput(căsuță)***.
+### void eraseFromVector(std::vector<T>& vect, T obj)
 
-Atâta timp cât fereastra este deschisă, se verifică dacă un obiect a fost apăsat cu *getClick*. Dacă da, atunci se fac modificări pe interfață în funcție de ce a fost apăsat, iar apoi obiectul apăsat se setează la *nullptr*.
+Șterge obiectul *obj* din vectorul de obiecte *vect*.
 
-### Materie, Notare, Evaluare
+Această funcție este folosită:
 
-Clasele Materie, Notare și Evaluare sunt folosite pentru a reține toate materiile și metodele de notare pentru fiecare dintre acestea. Fiecare materie are trei metode de notare separate, una pentru fiecare serie. Fiecare metodă de notare cuprinde mai multe evaluări, care au un procentaj din nota finală, un prag de promovare și o notă maximă care poate fi obținută.
+1. pentru a șterge materiile cu anul diferit de cel selectat (la alegerea seriei) din vectorul principal de materii;
+2. 
 
-### InvalidFilePathError, InvalidFileContentError, InvalidInputError - derivate din std:exception
+## Clasă șablon - Buton<TipAnimație>
 
-Clasa InvalidFilePathError este folosita atunci cand fișierul cu informațiile despre materii sau cel cu fontul textului nu pot fi incarcate. In acest caz, se va închide fereastra (dacă este deschisă), și se va afișa un mesaj (cu funcția suprascrisă *what*) în terminal legat de problemă.
-
-Clasa InvalidFileContentError este folosită atunci când fișierul cu informațiile despre materii nu conține informatii potrivite pentru program. În acest caz, pe lângă mesaj, se va afișa și linia din fișierul text unde s-a găsit problema.
-
-Clasa InvalidInputError este folosită atunci când este salvată o notă invalidă introdusă într-o căsuță de input. În acest caz, culoarea de animație a butonului de salvare se va schimba în roșu, iar nota nu se va salva.
+a
 
 ## Resurse
 
