@@ -22,7 +22,7 @@ Pentru a ieși din aplicație apăsați ESC.
 
 ### Singleton
 
-Acest design pattern este implementat în clasa Aplicație, și ne asigură cu poate exista o singură instanță a aplicației.
+Acest design pattern este implementat în clasa Aplicație, și ne asigură că poate exista o singură instanță a aplicației la un moment dat.
 
 Implementarea presupune:
 1. ștergerea *constructorului de copiere* și a *operatorului de atribuire (operator=)* din clasă;
@@ -52,7 +52,7 @@ Funția *on* face membrul *activ* să apeleze funcția *active(this)* (efectiv, 
 
 ## Funcții șablon (FuncțiiTemplate.h)
 
-### void eraseFromVector(std::vector<T>& vect, T obj)
+### void eraseFromVector(std::vector\<T>& vect, T obj)
 
 Șterge obiectul *obj* din vectorul de obiecte *vect*.
 
@@ -61,17 +61,17 @@ Această funcție este folosită:
 1. pentru a șterge materiile cu anul diferit de cel selectat (la alegerea seriei) din vectorul principal de materii;
 2. în funcțiile aplicației *removeObject(obj)* și *removeClickableObject(obj)*, pentru a șterge obiectul apelat din vectorul de obiecte (și, după caz, din vectorul de obiecte clickable) din aplicație.
 
-### bool isInVector(std::vector<T> vect, T obj)
+### bool isInVector(std::vector\<T> vect, T obj)
 
 Returnează *true* dacă obiectul *obj* este în vectorul de obiecte *vect*.
 
 Această funcție este folosită:
 
-1. pentru a verifica dacă un obiect apăsat (obținut cu funcția aplicației *getClick()* se află într-un vector de obiecte (butoanele de alegere a seriei, butoanele de alegere a materiilor opționale/facultative, căsuțele de introducere a notelor, butoanele de salvare a notelor), pentru a ști ce cod trebuie executat în urma unei apăsări;
+1. pentru a verifica dacă un obiect apăsat (obținut cu funcția aplicației *getClick()*) se află într-un vector de obiecte (e.g. butoanele de alegere a seriei, butoanele de alegere a materiilor opționale/facultative, căsuțele de introducere a notelor, butoanele de salvare a notelor), pentru a ști ce cod trebuie executat în urma unei apăsări;
 2. în afișarea materiilor opționale/facultative în pagina de introducere a notelor, prin alfarea materiilor care se află și în vectorul principal de materii, și în vectorul de opționale/facultative selectate;
 3. în funcțiile aplicației *removeObject(obj)* și *removeClickableObject(obj)*, pentru a afla dacă obiectul apelat trebuie șters din vectorul de obiecte clickable din aplicație.
 
-## Clasă șablon - Buton<TipAnimație>
+## Clasă șablon - Buton\<TipAnimație>
 
 Clasa **Buton** a fost transformată în clasă șablon, având un membru șablon ce reprezintă tipul de animație a click-ului.
 
@@ -79,6 +79,8 @@ Tipurile de animație au fost implementate cu clasele:
 1. **SeriesSelectionClick** (butonul își schimbă culoarea pentru o durată de timp, iar apoi revine la cea inițială);
 2. **OptFacSelectionClick** (butonul alternează între două culori la infinit);
 3. **GradeSaveClick** (butonul își schimbă culoarea în ordinea culoare secundară - culoare inițială - culoare secundară - culoare inițială).
+
+Cele trei clase au funcția membru **animate**, care execută animațiile descrise mai sus. Funcția este apelată prin membrul șablon al clasei Buton menționat mai sus.
 
 ## Resurse
 
