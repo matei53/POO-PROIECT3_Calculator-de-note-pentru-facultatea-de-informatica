@@ -122,7 +122,7 @@ void removeUnneededSubjects(const int an, std::vector<Materie>& materii)
 
 void createTitle(std::shared_ptr<Obiect>& titlu, sf::Font& font, Aplicatie& app)
 {
-    titlu = std::make_shared<TitleText>(TitleText({ 0, 0 }, { 1900, 135 }, 80, "Welcome", font, sf::Color::Yellow, sf::Color::Red, sf::Color::Green, sf::Color::Blue));
+    titlu = std::make_shared<TitleText>(TitleText({ 0, 0 }, { 1900, 135 }, 80, "Welcome", font, sf::Color(249, 255, 204), sf::Color(255, 204, 204), sf::Color(213, 255, 204), sf::Color(204, 213, 255)));
     std::dynamic_pointer_cast<TitleText>(titlu)->animateColors();
     titlu->align();
     app.addObject(titlu);
@@ -130,7 +130,7 @@ void createTitle(std::shared_ptr<Obiect>& titlu, sf::Font& font, Aplicatie& app)
 
 void createSeriesChoiceBox(std::shared_ptr<Obiect>& alegere_serie, sf::Font& font, Aplicatie& app)
 {
-    alegere_serie = std::make_shared<TitleText>(TitleText({ 0, 155 }, { 380, 85 }, 50, "Alegeti seria", font, sf::Color::Yellow));
+    alegere_serie = std::make_shared<TitleText>(TitleText({ 0, 155 }, { 380, 85 }, 50, "Alegeti seria", font, sf::Color(249, 255, 204)));
     alegere_serie->align();
     app.addObject(alegere_serie);
 }
@@ -157,7 +157,7 @@ void createSeriesButtons(std::vector<std::shared_ptr<Obiect>>& butoane_serii, sf
 
 void createForwardButton(std::shared_ptr<Obiect>& buton_inainte, sf::Font& font, Aplicatie& app)
 {
-    buton_inainte = std::make_shared<Buton<SeriesSelectionClick>>(Buton<SeriesSelectionClick>({ 1300, 155 }, { 185, 85 }, 50, "Inainte", font, sf::Color::Magenta, sf::Color::Red, 5));
+    buton_inainte = std::make_shared<Buton<SeriesSelectionClick>>(Buton<SeriesSelectionClick>({ 1300, 155 }, { 185, 85 }, 50, "Inainte", font, sf::Color(228, 204, 255), sf::Color(255, 204, 204), 5));
     buton_inainte->setClickable(1);
     buton_inainte->align();
     app.addObject(buton_inainte);
@@ -177,7 +177,7 @@ void deactivateSeriesButtons(std::vector<std::shared_ptr<Obiect>>& butoane_serii
 void createYearOneOptions(std::shared_ptr<Obiect>& titlu_facultative, std::vector<Materie>& materii, std::vector<std::shared_ptr<Obiect>>& butoane_facultative,
     sf::Font& font, Aplicatie& app, const int an)
 {
-    titlu_facultative = std::make_shared<TitleText>(TitleText({ 0, 250 }, { 1000, 75 }, 40, "Alegeti facultativele la care doriti sa participati", font, sf::Color::Yellow));
+    titlu_facultative = std::make_shared<TitleText>(TitleText({ 0, 250 }, { 1000, 75 }, 40, "Alegeti facultativele la care doriti sa participati", font, sf::Color(249, 255, 204)));
     app.addObject(titlu_facultative);
     titlu_facultative->align();
 
@@ -201,7 +201,7 @@ void createYearOneOptions(std::shared_ptr<Obiect>& titlu_facultative, std::vecto
 void createYearTwoOptions(std::shared_ptr<Obiect>& titlu_facultative, std::shared_ptr<Obiect>& titlu_optionale, std::vector<Materie>& materii,
     std::vector<std::shared_ptr<Obiect>>& butoane_facultative, std::vector<std::shared_ptr<Obiect>>& butoane_optionale, sf::Font& font, Aplicatie& app, const int an)
 {
-    titlu_facultative = std::make_shared<TitleText>(TitleText({ 0, 250 }, { 1000, 75 }, 40, "Alegeti facultativele la care doriti sa participati", font, sf::Color::Yellow));
+    titlu_facultative = std::make_shared<TitleText>(TitleText({ 0, 250 }, { 1000, 75 }, 40, "Alegeti facultativele la care doriti sa participati", font, sf::Color(249, 255, 204)));
     app.addObject(titlu_facultative);
     titlu_facultative->align();
 
@@ -221,7 +221,7 @@ void createYearTwoOptions(std::shared_ptr<Obiect>& titlu_facultative, std::share
         app.addObject(b);
     }
 
-    titlu_optionale = std::make_shared<TitleText>(TitleText({ 0, y }, { 1000, 75 }, 40, "Alegeti optionalul la care veti participa", font, sf::Color::Yellow));
+    titlu_optionale = std::make_shared<TitleText>(TitleText({ 0, y }, { 1000, 75 }, 40, "Alegeti optionalul la care veti participa", font, sf::Color(249, 255, 204)));
     app.addObject(titlu_optionale);
     titlu_optionale->align();
     y += 80;
@@ -245,7 +245,7 @@ void createYearTwoOptions(std::shared_ptr<Obiect>& titlu_facultative, std::share
 void createYearThreeOptions(std::shared_ptr<Obiect>& titlu_optionale, std::vector<Materie>& materii, std::vector<std::shared_ptr<Obiect>>& butoane_optionale,
     sf::Font& font, Aplicatie& app, const int an)
 {
-    titlu_optionale = std::make_shared<TitleText>(TitleText({ 0, 250 }, { 1700, 75 }, 30, "Alegeti optionalele la care veti participa.\nTrebuie sa alegeti 3 pentru semestrul 1 (primele doua coloane) si 3 pentru semestrul 2 (ultimele doua coloane).", font, sf::Color::Yellow));
+    titlu_optionale = std::make_shared<TitleText>(TitleText({ 0, 250 }, { 1700, 75 }, 30, "Alegeti optionalele la care veti participa.\nTrebuie sa alegeti 3 pentru semestrul 1 (primele doua coloane) si 3 pentru semestrul 2 (ultimele doua coloane).", font, sf::Color(249, 255, 204)));
     app.addObject(titlu_optionale);
     titlu_optionale->align();
 
@@ -358,7 +358,6 @@ void manageFacultatives(std::vector<Materie>& materii, std::vector<std::shared_p
 
 bool checkOptionalSelection(std::vector<std::shared_ptr<Obiect>>& butoane_optionale)
 {
-    bool ok = 1;
     for (std::shared_ptr<Obiect> b : butoane_optionale)
         if (b->isClickable())
             return 0;
@@ -403,10 +402,10 @@ void addPageTwoSideObjects(std::shared_ptr<Obiect>& titlu_medie_finala_bursa, st
     app.addObject(medie_finala_buget);
     app.addObject(total_credite_display);
 
-    instructiune1 = std::make_shared<TitleText>(TitleText({ 1700, 230 }, { 195, 100 }, 14, "In calculul creditelor si\na punctelor de credit nu\nse iau in calcul facultativele.\nPunctele credit se folosesc\nin reclasificarea buget/taxa.", font, sf::Color::Yellow));
-    instructiune2 = std::make_shared<TitleText>(TitleText({ 1700, 335 }, { 195, 150 }, 14, "Numarul din stanga\nevaluarii reprezinta\nnumarul de puncte din\nnota finala.\nNumarul din dreapta\nreprezinta punctajul\nmaxim ce se poate obtine\nla evaluarea respectiva.", font, sf::Color::Yellow));
-    instructiune3 = std::make_shared<TitleText>(TitleText({ 1700, 490 }, { 195, 360 }, 14, "Daca pragul de trecere la\no evaluare a unei materii nu\na fost trecut sau daca\nnota finala a unei\nmaterii este sub 5,\natunci acea materie\neste picata.\nIn acest caz, casuta\ncu numele materiei si\ncea cu media pentru\nbursa vor deveni rosii.\nNotele pot fi inlocuite\ndupa restante/mariri.\nDaca cel putin o materie\neste inca picata dupa\nrestante, atunci bursa nu\nse poate obtine pentru\nanul urmator. Creditele la\nmateriile picate nu se iau\nin calcul la stabilirea\ncreditelor finale si a\npunctelor de credit.", font, sf::Color::Yellow));
-    instructiune4 = std::make_shared<TitleText>(TitleText({ 1700, 855 }, { 195, 120 }, 14, "Criteriile de promovare a\nanului universitar se\ngasesc in capitolul 8 din\nregulamentul privind\nactivitatea profesionala\na studentilor.", font, sf::Color::Yellow));
+    instructiune1 = std::make_shared<TitleText>(TitleText({ 1700, 230 }, { 195, 100 }, 14, "In calculul creditelor si\na punctelor de credit nu\nse iau in calcul facultativele.\nPunctele credit se folosesc\nin reclasificarea buget/taxa.", font, sf::Color(249, 255, 204)));
+    instructiune2 = std::make_shared<TitleText>(TitleText({ 1700, 335 }, { 195, 150 }, 14, "Numarul din stanga\nevaluarii reprezinta\nnumarul de puncte din\nnota finala.\nNumarul din dreapta\nreprezinta punctajul\nmaxim ce se poate obtine\nla evaluarea respectiva.", font, sf::Color(249, 255, 204)));
+    instructiune3 = std::make_shared<TitleText>(TitleText({ 1700, 490 }, { 195, 360 }, 14, "Daca pragul de trecere la\no evaluare a unei materii nu\na fost trecut sau daca\nnota finala a unei\nmaterii este sub 5,\natunci acea materie\neste picata.\nIn acest caz, casuta\ncu numele materiei si\ncea cu media pentru\nbursa vor deveni rosii.\nNotele pot fi inlocuite\ndupa restante/mariri.\nDaca cel putin o materie\neste inca picata dupa\nrestante, atunci bursa nu\nse poate obtine pentru\nanul urmator. Creditele la\nmateriile picate nu se iau\nin calcul la stabilirea\ncreditelor finale si a\npunctelor de credit.", font, sf::Color(249, 255, 204)));
+    instructiune4 = std::make_shared<TitleText>(TitleText({ 1700, 855 }, { 195, 120 }, 14, "Criteriile de promovare a\nanului universitar se\ngasesc in capitolul 8 din\nregulamentul privind\nactivitatea profesionala\na studentilor.", font, sf::Color(249, 255, 204)));
     instructiune1->align();
     instructiune2->align();
     instructiune3->align();
@@ -440,8 +439,8 @@ void addPageTwoSubjectInputs(std::vector<Materie>& materii, const int an, const 
             std::get<0>(M) = ObiectFactory::titlu_materie({ x, y1 }, m.getNume(), font);
             if (m.getNotare(serie)->getNotaFinala() != -1 && m.getNotare(serie)->getNotaFinala() < 5)
             {
-                std::get<0>(M)->changeColor(sf::Color::Red);
-                titlu_medie_finala_bursa->changeColor(sf::Color::Red);
+                std::get<0>(M)->changeColor(sf::Color(255, 204, 204));
+                titlu_medie_finala_bursa->changeColor(sf::Color(255, 204, 204));
             }
             std::get<0>(M)->align();
             app.addObject(std::get<0>(M));
@@ -463,8 +462,8 @@ void addPageTwoSubjectInputs(std::vector<Materie>& materii, const int an, const 
                     inp = ObiectFactory::input_note({ x + 160, y1 }, "> " + std::to_string(e->getNota()).substr(0, 5), font);
                 if (e->getNota() < e->getPrag() && e->getNota() != -1)
                 {
-                    std::get<0>(M)->changeColor(sf::Color::Red);
-                    titlu_medie_finala_bursa->changeColor(sf::Color::Red);
+                    std::get<0>(M)->changeColor(sf::Color(255, 204, 204));
+                    titlu_medie_finala_bursa->changeColor(sf::Color(255, 204, 204));
                 }
                 auto save = ObiectFactory::buton_salvare({ x + 240, y1 }, "OK", font);
                 ev->align(); inp->align(); save->align();
@@ -561,7 +560,7 @@ void setFinals(std::vector<std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<O
                 {
                     if (mt.isFacultativ()) facl = 1;
                     credite = mt.getCredit();
-                    if (std::get<0>(final)->getColor() == sf::Color::Red) trecere = 0;
+                    if (std::get<0>(final)->getColor() == sf::Color(255, 204, 204)) trecere = 0;
                     break;
                 }
             }
@@ -615,7 +614,7 @@ void manageInputedGrade(std::vector<std::tuple<std::shared_ptr<Obiect>, std::sha
     bool prag_fail = 0, fail = 0, complet = 1;
 
     if (grade > materii[j].getNotare(serie)->getEvals()[i]->getMaxim())
-        throw InvalidInputError(sf::Color::Red);
+        throw InvalidInputError(sf::Color(255, 204, 204));
 
     materii[j].getNotare(serie)->getEvals()[i]->setNota(grade);
     saveGrade(materii, serie, grade, i, j);
@@ -628,29 +627,29 @@ void manageInputedGrade(std::vector<std::tuple<std::shared_ptr<Obiect>, std::sha
     {
         prag_fail = 0;
 
-        if (std::get<0>(m)->getColor() == sf::Color::Red)
+        if (std::get<0>(m)->getColor() == sf::Color(255, 204, 204))
         {
-            std::get<0>(m)->changeColor(sf::Color::Green);
+            std::get<0>(m)->changeColor(sf::Color(213, 255, 204));
 
             bool brs = 1;
             for (std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>> mbr : notare_materii)
-                if (std::get<0>(mbr)->getColor() == sf::Color::Red)
+                if (std::get<0>(mbr)->getColor() == sf::Color(255, 204, 204))
                 {
                     brs = 0;
                     break;
                 }
             if (brs == 1)
-                titlu_medie_finala_bursa->changeColor(sf::Color::Magenta);
+                titlu_medie_finala_bursa->changeColor(sf::Color(228, 204, 255));
         }
     }
     else if (fail == 1)
     {
         prag_fail = 1;
 
-        if (std::get<0>(m)->getColor() == sf::Color::Green)
+        if (std::get<0>(m)->getColor() == sf::Color(213, 255, 204))
         {
-            std::get<0>(m)->changeColor(sf::Color::Red);
-            titlu_medie_finala_bursa->changeColor(sf::Color::Red);
+            std::get<0>(m)->changeColor(sf::Color(255, 204, 204));
+            titlu_medie_finala_bursa->changeColor(sf::Color(255, 204, 204));
         }
     }
 
@@ -663,24 +662,24 @@ void manageInputedGrade(std::vector<std::tuple<std::shared_ptr<Obiect>, std::sha
         materii[j].getNotare(serie)->calculNotaFinala();
         saveFinalGrade(materii, serie, j);
 
-        if (materii[j].getNotare(serie)->getNotaFinala() < 5 && std::get<0>(m)->getColor() == sf::Color::Green)
+        if (materii[j].getNotare(serie)->getNotaFinala() < 5 && std::get<0>(m)->getColor() == sf::Color(213, 255, 204))
         {
-            std::get<0>(m)->changeColor(sf::Color::Red);
-            titlu_medie_finala_bursa->changeColor(sf::Color::Red);
+            std::get<0>(m)->changeColor(sf::Color(255, 204, 204));
+            titlu_medie_finala_bursa->changeColor(sf::Color(255, 204, 204));
         }
-        else if (materii[j].getNotare(serie)->getNotaFinala() >= 5 && std::get<0>(m)->getColor() == sf::Color::Red && prag_fail == 0)
+        else if (materii[j].getNotare(serie)->getNotaFinala() >= 5 && std::get<0>(m)->getColor() == sf::Color(255, 204, 204) && prag_fail == 0)
         {
-            std::get<0>(m)->changeColor(sf::Color::Green);
+            std::get<0>(m)->changeColor(sf::Color(213, 255, 204));
 
             bool brs = 1;
             for (std::tuple<std::shared_ptr<Obiect>, std::shared_ptr<Obiect>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>, std::vector<std::shared_ptr<Obiect>>> mbr : notare_materii)
-                if (std::get<0>(mbr)->getColor() == sf::Color::Red)
+                if (std::get<0>(mbr)->getColor() == sf::Color(255, 204, 204))
                 {
                     brs = 0;
                     break;
                 }
             if (brs == 1)
-                titlu_medie_finala_bursa->changeColor(sf::Color::Magenta);
+                titlu_medie_finala_bursa->changeColor(sf::Color(228, 204, 255));
         }
         std::get<1>(m)->setText(std::to_string(materii[j].getNotare(serie)->getNotaFinala()));
         std::get<1>(m)->align();
@@ -704,13 +703,13 @@ void manageSaveClick(std::vector<std::tuple<std::shared_ptr<Obiect>, std::shared
     std::vector<std::shared_ptr<Obiect>>>& m, const int i)
 {
     std::shared_ptr<Buton<GradeSaveClick>> sav = std::dynamic_pointer_cast<Buton<GradeSaveClick>>(app.getClick());
-    sav->changeAnimationColor(sf::Color::Green);
+    sav->changeAnimationColor(sf::Color(213, 255, 204));
     try
     {
         std::string grade_string = std::get<3>(m).at(i)->getText().substr(2);
         if (grade_string != "" && grade_string.back() == '|') grade_string.pop_back();
         if (std::count(grade_string.begin(), grade_string.end(), '.') > 1 || grade_string == "." || grade_string == "")
-            throw InvalidInputError(sf::Color::Red);
+            throw InvalidInputError(sf::Color(255, 204, 204));
         sav->animateClick();
 
         float grade = std::stof(grade_string);
@@ -852,8 +851,8 @@ int main()
                         removeFirstPageObjects(app, titlu, alegere_serie, buton_inainte, titlu_facultative, titlu_optionale, butoane_serii, butoane_optionale, butoane_facultative);
                         addPageTwoSideObjects(titlu_medie_finala_bursa, medie_finala_bursa, titlu_medie_finala_buget, medie_finala_buget, titlu_credite, total_credite_display, instructiune1, instructiune2, instructiune3, instructiune4, font, app);
                         addPageTwoSubjectInputs(materii, an, serie, optionale_selectate, facultative_selectate, notare_materii, font, app, titlu_medie_finala_bursa);
+                        setFinals(notare_materii, materii, medie_finala_bursa, medie_finala_buget, total_credite_display);
                     }
-                    setFinals(notare_materii, materii, medie_finala_bursa, medie_finala_buget, total_credite_display);
                 }
 
                 else manageGradeInputs(notare_materii, app, materii, serie, titlu_medie_finala_bursa, medie_finala_bursa, medie_finala_buget, total_credite_display);
